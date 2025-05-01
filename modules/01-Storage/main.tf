@@ -49,12 +49,17 @@ resource "aws_s3_bucket_lifecycle_configuration" "s3_logging_bucket_lifecycle" {
     id     = "log-expiration"
     status = "Enabled"
 
+    filter {
+      prefix = "" # Applies to all objects
+    }
+
     expiration {
       days = 90
     }
-    
   }
 }
+
+
 
 # Enable server-side encryption for data at rest
 # Uses AES256 encryption algorithm for all objects in the bucket

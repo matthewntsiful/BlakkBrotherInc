@@ -1,5 +1,5 @@
 module "storage" {
-  source       = "./modules/01-Storage"
+  source       = "../modules/01-Storage"
   
   region       = var.region
   environment  = var.environment
