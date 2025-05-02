@@ -15,7 +15,7 @@ resource "aws_vpc" "vpc" {
 
 #Create the Internet Gateway resource
 resource "aws_internet_gateway" "main" {
-  vpc_id = aws_vpc.main.id
+  vpc_id = aws_vpc.vpc.id
   tags = merge(
     local.common_tags,
     {
@@ -79,7 +79,7 @@ resource "aws_route_table" "public" {
     tags = merge(
         local.common_tags,
         {
-           Name = "${local.public_rtb_name}"
+           Name = local.public_rtb_name
         }
     )
 }
@@ -99,7 +99,7 @@ resource "aws_eip" "nat" {
   tags = merge(
     local.common_tags,
     {
-      Name = "${local.nat_eip_name}"
+      Name = local.nat_eip_name
     }
   )
 }
@@ -111,9 +111,11 @@ resource "aws_nat_gateway" "main" {
   tags = merge(
     local.common_tags,
     {
-      Name = "${local.nat_eip_name}"
+      Name = local.nat_gateway_name
     }
   )
+  depends_on = [ aws_eip.nat]
+
 }
 #Create Private Route Table resource with route to NAT Gateway
 resource "aws_route_table" "private" {
@@ -125,7 +127,7 @@ resource "aws_route_table" "private" {
   tags = merge(
     local.common_tags,
     {
-       Name = "${local.private_rtb_name}"
+       Name = local.private_rtb_name
     }
   )
 }
