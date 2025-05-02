@@ -24,3 +24,5 @@ terraform.rc
 
 # Sensitive outputs or secrets
 secrets.auto.tfvars
+
+terraform.tfvars
