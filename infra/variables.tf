@@ -123,4 +123,55 @@ variable "availability_zones" {
 }
 
 
-   
+  #---------------------------------------------------------------------------------------
+  #Security Module Variables
+  #----------------------------------------------------------------------------------------
+
+  variable ssh_port {
+  description = "The port used for SSH connections."
+  type        = number
+  default     = 22
+}
+
+variable "my_ip" {
+  description = "The IP address of the user."
+  type        = string
+  default     = "0.0.0.0/16" # Replace with your actual IP addres
+}
+variable "http_port" {
+  description = "The port used for HTTP connections."
+  type        = number
+  default     = 80
+}
+variable "https_port" {
+  description = "The port used for HTTPS connections."
+  type        = number
+  default     = 443
+}
+variable "mysql_port" {
+  description = "The port used for MySQL connections."
+  type        = number
+  default     = 3306
+}
+
+variable "jump-server_sg_name" {
+  description = "The name of the security group for the jump server."
+  type        = string
+  default     = "jump-server-sg"
+}
+variable "alb_sg_name" {
+    description = "The name of the security group for the Application Load Balancer (ALB)."
+    type        = string
+    default     = "alb-sg" 
+
+}
+variable "ecs_sg_name" {
+    description = "The name of the security group for the Amazon Elastic Container Service (ECS)."
+    type        = string
+    default     = "ecs-sg" 
+}
+variable "mysql_sg_name" {
+    description = "The name of the security group for the Amazon Relational Database Service (RDS)."
+    type        = string
+    default     = "rds-sg" 
+}

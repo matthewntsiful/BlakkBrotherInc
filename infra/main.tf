@@ -56,3 +56,41 @@ module "networking" {
 
   depends_on = [ module.storage] 
 }
+
+#-----------------------------------------------------------------------------------------
+# Security module configuration
+#-----------------------------------------------------------------------------------------
+# This module creates security groups with the specified configuration.
+# Inputs:
+#   - region: AWS region where security groups will be created
+#   - environment: Environment name (dev/staging/prod)
+#   - project_name: Name of the project 
+#   - owner: Owner/team responsible for the security groups
+#   - vpc_id: ID of the VPC where security groups will be created 
+#   - vpc_name: Name of the VPC where security groups will be created
+#   - jump_server_sg_name: Name of the security group for the jump server
+#   - alb_sg_name: Name of the security group for the Application Load Balancer (ALB)
+#   - ecs_sg_name: Name of the security group for the Amazon Elastic Container Service (ECS)
+#   - mysql_sg_name: Name of the security group for the Amazon Relational Database Service (RDS)
+module "security" {
+  source       = "../modules/03-Security"
+  
+  region       = var.region
+  environment  = var.environment
+  project_name = var.project_name
+  owner        = var.owner
+  vpc_name     = var.vpc_name
+  alb_sg_name   = var.alb_sg_name
+  ecs_sg_name   = var.ecs_sg_name
+  mysql_sg_name = var.mysql_sg_name
+  jump-server_sg_name = var.jump-server_sg_name
+  public_destination_cidr = var.public_destination_cidr
+  ssh_port = var.ssh_port
+  http_port = var.http_port
+  https_port = var.https_port
+  mysql_port = var.mysql_port
+  my_ip = var.my_ip
+  
+  
+  depends_on = [ module.networking ]
+}

@@ -26,17 +26,3 @@ resource "aws_ssm_parameter" "mysql_sg_id" {
     value = aws_security_group.mysql-sg.id        
 }      
 
-#Store VPC ID in SSM Parameter Store
-resource "aws_ssm_parameter" "vpc_id" {
-  name  = "/${var.environment}/${var.project_name}/vpc_id"
-  type  = "String"
-  value = aws_vpc.vpc.id
-}
-
-#Store VPC CIDR in SSM Parameter Store
-resource "aws_ssm_parameter" "vpc_cidr" {
-    name  = "/${var.environment}/${var.project_name}/vpc_cidr"
-    type  = "String"
-    value = aws_vpc.vpc.cidr_block
-}   
-

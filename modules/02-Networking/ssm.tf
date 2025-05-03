@@ -39,7 +39,9 @@ resource "aws_ssm_parameter" "vpc_id" {
     type  = "SecureString"
     value = aws_subnet.app[count.index].id
     tags  = local.common_tags
-    
+
+    overwrite = true
+
     depends_on = [ aws_subnet.app ]
     }
 
