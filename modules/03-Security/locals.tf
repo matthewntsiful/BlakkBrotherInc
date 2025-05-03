@@ -14,9 +14,9 @@ locals {
 }
 
 locals {
-   jump-server_sg = "${local.name_prefix}-${var.jump-server_sg}"
-   alb_sg = "${local.name_prefix}-${var.alb_sg}"
-   ecs_sg = "${local.name_prefix}-${var.ecs_sg}"
-   rds_sg = "${local.name_prefix}-${var.rds_sg}"
-   vpc_name = "${local.name_prefix}-${var.vpc_name}"
+   jump-server_sg_name =   "${local.name_prefix}-${var.jump-server_sg_name}"
+   alb_sg_name =   "${local.name_prefix}-${var.alb_sg_name}"
+   ecs_sg_name =   "${local.name_prefix}-${var.ecs_sg_name}"
+   mysql_sg_name =  "${local.name_prefix}-${var.mysql_sg_name}"
+   vpc_name =  "${local.name_prefix}-${var.vpc_name}"
 }
