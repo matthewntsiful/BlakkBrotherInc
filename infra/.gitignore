@@ -26,3 +26,5 @@ terraform.rc
 secrets.auto.tfvars
 
 terraform.tfvars
+
+.terraform.tfstate.lock.info
