@@ -19,4 +19,5 @@ locals {
    ecs_sg_name =   "${local.name_prefix}-${var.ecs_sg_name}"
    mysql_sg_name =  "${local.name_prefix}-${var.mysql_sg_name}"
    vpc_name =  "${local.name_prefix}-${var.vpc_name}"
+   waf_acl_name =  "${local.name_prefix}-${var.waf_acl_name}"
 }

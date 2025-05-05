@@ -82,3 +82,13 @@ variable "mysql_sg_name" {
     type        = string
     default     = "rds-sg" 
 }
+variable "waf_acl_name" {
+    description = "The name of the Web Application Firewall (WAF) access control list (ACL)."
+    type        = string
+    default     = "waf-acl" 
+}
+ variable waf_metric_name {
+    description = "The name of the Web Application Firewall (WAF) metric."
+    type        = string
+    default     = "webACL"
+}

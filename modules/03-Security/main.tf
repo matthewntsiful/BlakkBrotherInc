@@ -1,3 +1,41 @@
+#Create WAF Web ACL to protect against ALB OWaSP Top 10 vulnerabilities use aws managed rules
+resource "aws_wafv2_web_acl" "waf_acl" {
+  name        = local.waf_acl_name
+  scope       = "REGIONAL"
+  description = "WAF Web ACL for the Application Load Balancer"
+  default_action {
+    allow {}
+  }  
+  visibility_config {
+    cloudwatch_metrics_enabled = true
+    metric_name                = local.waf_acl_name
+    sampled_requests_enabled   = true   
+  }
+  rule {
+  name     = "AWSManagedRulesCommonRuleSet"
+  priority = 0
+
+  override_action {
+    none {}
+  }
+
+  statement {
+    managed_rule_group_statement {
+      name        = "AWSManagedRulesCommonRuleSet"
+      vendor_name = "AWS"
+    }
+  }
+
+  visibility_config {
+    cloudwatch_metrics_enabled = true
+    metric_name                = "awsCommonRuleSet"
+    sampled_requests_enabled   = true
+  }
+}
+
+}
+  
+
 #Create security group for jump-server no inbound rules
 # This security group is for the jump server, which typically has no inbound rules to restrict access.
 resource "aws_security_group" "jump-server-sg"{
