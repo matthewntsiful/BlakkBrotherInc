@@ -3,30 +3,35 @@
 variable "region" {
   description = "AWS region to deploy resources"
   type        = string
+  default     = "us-east-1"
 }
 
 # Region Suffix
 variable "rgn_suffix" {
   description = "AWS region suffix"
   type        = string
+  default     = "east"
 }
 
 # Owner
 variable "owner" {
   description = "Owner of the resources"
   type        = string
+  default     = "AWS"
 }
 
 # Environment
 variable "environment" {
   description = "Environment name"
   type        = string
+  default     = "dev"
 }
 
 # Variable for SSM Policy ARN
 variable "ssm_policy_arns" {
   description = "Amazon SSM Policy ARN"
   type        = list(string)
+  
 }
 
 # Variable ECS Task Managed Policy ARN
@@ -52,3 +57,4 @@ variable "s3_policy_arns" {
   description = "Amazon S3 Policy ARN"
   type        = list(string)
 }
+

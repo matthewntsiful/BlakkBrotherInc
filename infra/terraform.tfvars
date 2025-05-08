@@ -8,7 +8,7 @@
 
 
 project_name = "blakkbrotherinc"
-owner        = "Matthew Odoom Ntsiful"
+owner        = "BlakkBrother"
 environment  = "dev" 
 region       = "us-east-1"
 
@@ -50,3 +50,35 @@ ssh_port = 22
 http_port = 80
 https_port = 443
 mysql_port = 3306
+
+#------------------------------------------------------------------------------------------
+#IAM Module Configuration Varriable Values
+#------------------------------------------------------------------------------------------
+# SSM Policy ARNS
+ssm_policy_arns = [
+  "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore",
+  "arn:aws:iam::aws:policy/service-role/AmazonEC2RoleforSSM"
+]
+
+# ECS Task Policy ARNS
+ecs_task_policy_arns = [
+  "arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy"
+]
+
+# ECS Execution Policy ARNS
+ecs_execution_policy_arns = [
+  "arn:aws:iam::aws:policy/AmazonECS_FullAccess"
+]
+
+# # ECS Service Policy ARNS
+# ecs_service_policy_arns = [
+#   "arn:aws:iam::aws:policy/aws-service-role/AmazonECSServiceRolePolicy"
+# ]
+
+
+# S3 Managed Policy ARNs
+s3_policy_arns = [
+  "arn:aws:iam::aws:policy/AmazonS3FullAccess"
+  ]
+
+  

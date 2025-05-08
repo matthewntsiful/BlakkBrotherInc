@@ -21,6 +21,30 @@ module "storage" {
 }
 
 #-----------------------------------------------------------------------------------------
+# IAM module configuration  
+#-----------------------------------------------------------------------------------------
+# This module creates an IAM role with the specified configuration. 
+# Inputs:
+#   - region: AWS region where role will be created
+#   - environment: Environment name (dev/staging/prod)
+#   - project_name: Name of the project 
+#   - owner: Owner/team responsible for the role
+#   - role_name: Name of the role
+module "iam" {
+  source       = "../modules/04-Iam"
+  
+  region       = var.region
+  environment  = var.environment  
+  
+  owner        = var.owner
+   ssm_policy_arns           = var.ssm_policy_arns
+  ecs_task_policy_arns      = var.ecs_task_policy_arns
+  ecs_execution_policy_arns = var.ecs_execution_policy_arns
+  # ecs_service_policy_arns   = var.ecs_service_policy_arns
+  s3_policy_arns            = var.s3_policy_arns
+}
+
+#-----------------------------------------------------------------------------------------
 # Network module configuration
 #-----------------------------------------------------------------------------------------
 # This module creates a VPC with the specified configuration. 

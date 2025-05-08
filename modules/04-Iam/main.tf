@@ -24,7 +24,7 @@ resource "aws_iam_instance_profile" "ec2_instance_profile" {
 # Create ECS Task Role
 resource "aws_iam_role" "ecs_task_role" {
   name               = local.ecs_task_role_name
-  assume_role_policy = file("${path.root}/Policies/ecs-assume-role-policy.json")
+  assume_role_policy = file("${path.root}/policies/ecs-assume-role-policy.json")
 
   tags = merge(local.common_tags, {
     Name = local.ecs_task_role_name
@@ -41,7 +41,7 @@ resource "aws_iam_role_policy_attachment" "ecs_task_policy_attachment" {
 # Create ECS Execution Role
 resource "aws_iam_role" "ecs_execution_role" {
   name               = local.ecs_execution_role_name
-  assume_role_policy = file("${path.root}/Policies/ecs-assume-role-policy.json")
+  assume_role_policy = file("${path.root}/policies/ecs-assume-role-policy.json")
 
   tags = merge(local.common_tags, {
     Name = local.ecs_execution_role_name
@@ -58,7 +58,7 @@ resource "aws_iam_role_policy_attachment" "ecs_execution_policy_attachment" {
 # Create ECS Task Execution Role
 resource "aws_iam_role" "ecs_task_execution_role" {
   name               = local.ecs_task_execution_role_name
-  assume_role_policy = file("${path.root}/Policies/ecs-assume-role-policy.json")
+  assume_role_policy = file("${path.root}/policies/ecs-assume-role-policy.json")
 
   tags = merge(local.common_tags, {
     Name = local.ecs_task_execution_role_name
@@ -92,7 +92,7 @@ resource "aws_iam_role_policy_attachment" "ecs_task_execution_policy_attachment"
 # Create IAM Role to Allow S3 Put and Get Access to S3 for Logging (for VPC, EC2, ELB)
 resource "aws_iam_role" "s3_role" {
   name               = local.s3_role_name
-  assume_role_policy = file("${path.root}/Policies/s3-assume-role-policy.json")
+  assume_role_policy = file("${path.root}/policies/s3-assume-role-policy.json")
 
   tags = merge(local.common_tags, {
     Name = local.s3_role_name

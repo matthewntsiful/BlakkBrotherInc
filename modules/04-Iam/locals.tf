@@ -14,11 +14,11 @@ locals {
 
 # Local variables for resource names
 locals {
-  ssm_role_name                = "${local.name_prefix}-geek-ssm-role"
-  ssm_profile_name             = "${local.name_prefix}-geek-ssm-profile"
-  ecs_task_role_name           = "${local.name_prefix}-geek-ecs-task-role"
-  ecs_execution_role_name      = "${local.name_prefix}-geek-ecs-execution-role"
-  ecs_task_execution_role_name = "${local.name_prefix}-geek-ecs-task-execution-role"
-  ecs_service_role_name        = "${local.name_prefix}-geek-ecs-service-role"
-  s3_role_name                 = "${local.name_prefix}-geek-s3-role"
+  ssm_role_name                = "${local.name_prefix}-blakk-ssm-role"
+  ssm_profile_name             = "${local.name_prefix}-blakk-ssm-profile"
+  ecs_task_role_name           = "${local.name_prefix}-blakk-ecs-task-role"
+  ecs_execution_role_name      = "${local.name_prefix}-blakk-ecs-execution-role"
+  ecs_task_execution_role_name = "${local.name_prefix}-blakk-ecs-task-execution-role"
+  ecs_service_role_name        = "${local.name_prefix}-blakk-ecs-service-role"
+  s3_role_name                 = "${local.name_prefix}-blakk-s3-role"
 }
