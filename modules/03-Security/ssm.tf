@@ -26,3 +26,9 @@ resource "aws_ssm_parameter" "mysql_sg_id" {
     value = aws_security_group.mysql-sg.id        
 }      
 
+#Store WAf ACL ID in SSM Parameter Store
+resource "aws_ssm_parameter" "waf_acl_id" {
+    name  = "/${var.environment}/${var.project_name}/waf_acl_id"
+    type  = "String"
+    value = aws_wafv2_web_acl.waf_acl.id        
+}
