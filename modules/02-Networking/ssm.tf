@@ -99,3 +99,10 @@ resource "aws_ssm_parameter" "vpc_id" {
     }
     
     #Store VPC CIDR in SSM Parameter Store
+    resource "aws_ssm_parameter" "vpc_cidr" {
+    name  = "${local.name_prefix}-vpc-cidr"
+    type  = "SecureString"
+    value = var.vpc_cidr
+    tags  = local.common_tags
+
+    } 
