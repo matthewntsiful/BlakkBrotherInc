@@ -6,7 +6,6 @@ variable "region" {
   default     = "us-east-1"
 }
 
-# Region Suffix
 variable "rgn_suffix" {
   description = "AWS region suffix"
   type        = string
