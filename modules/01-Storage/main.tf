@@ -1,4 +1,4 @@
-# Create S3 bucket for logging - this is the main bucket resource
+ #Create S3 bucket for logging - this is the main bucket resource
 resource "aws_s3_bucket" "s3_logging_bucket" {
   bucket = "${local.name_prefix}-s3-logging-bucket"
   # Deprecated: Use aws_s3_bucket_acl resource instead

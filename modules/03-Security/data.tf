@@ -4,9 +4,9 @@ data "aws_ssm_parameter" "vpc_id" {
 } 
 
 
+# #Retrieve VPC ID from SSM Parameter Store
+# data "aws_ssm_parameter" "vpc_id" {
+#   name = "dev-blakkbrotherinc-us-east-1-vpc-id"
 
-data "aws_ssm_parameter" "vpc_id" {
-  name = "dev-blakkbrotherinc-us-east-1-vpc-id"
-
-}
+# }
 
