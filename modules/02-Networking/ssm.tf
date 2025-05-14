@@ -40,11 +40,12 @@ resource "aws_ssm_parameter" "vpc_id" {
     value = aws_subnet.app[count.index].id
     tags  = local.common_tags
 
-    overwrite = true
 
     depends_on = [ aws_subnet.app ]
+    
+   overwrite = true   
+   
     }
-
 
     #Store DB Subnet ID in SSM Parameter Store
     resource "aws_ssm_parameter" "db_subnet_id" {
