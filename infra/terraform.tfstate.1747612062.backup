@@ -1,0 +1,4153 @@
+{
+  "version": 4,
+  "terraform_version": "1.11.4",
+  "serial": 2853,
+  "lineage": "414aa1fb-4606-e369-01d1-e7de0d2fc02c",
+  "outputs": {},
+  "resources": [
+    {
+      "module": "module.compute",
+      "mode": "data",
+      "type": "aws_acm_certificate",
+      "name": "acm_cert",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": []
+    },
+    {
+      "module": "module.compute",
+      "mode": "data",
+      "type": "aws_ami",
+      "name": "ubuntu",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "architecture": "x86_64",
+            "arn": "arn:aws:ec2:us-east-1::image/ami-0718b4ac01274c8cb",
+            "block_device_mappings": [
+              {
+                "device_name": "/dev/sda1",
+                "ebs": {
+                  "delete_on_termination": "true",
+                  "encrypted": "false",
+                  "iops": "0",
+                  "snapshot_id": "snap-03d1e24c6fa1e21cc",
+                  "throughput": "0",
+                  "volume_size": "8",
+                  "volume_type": "gp2"
+                },
+                "no_device": "",
+                "virtual_name": ""
+              },
+              {
+                "device_name": "/dev/sdb",
+                "ebs": {},
+                "no_device": "",
+                "virtual_name": "ephemeral0"
+              },
+              {
+                "device_name": "/dev/sdc",
+                "ebs": {},
+                "no_device": "",
+                "virtual_name": "ephemeral1"
+              }
+            ],
+            "boot_mode": "legacy-bios",
+            "creation_date": "2025-05-08T11:46:30.000Z",
+            "deprecation_time": "2027-05-08T11:46:30.000Z",
+            "description": "Canonical, Ubuntu, 20.04, amd64 focal image",
+            "ena_support": true,
+            "executable_users": null,
+            "filter": [
+              {
+                "name": "name",
+                "values": [
+                  "ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*"
+                ]
+              },
+              {
+                "name": "virtualization-type",
+                "values": [
+                  "hvm"
+                ]
+              }
+            ],
+            "hypervisor": "xen",
+            "id": "ami-0718b4ac01274c8cb",
+            "image_id": "ami-0718b4ac01274c8cb",
+            "image_location": "amazon/ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-20250508.1",
+            "image_owner_alias": "amazon",
+            "image_type": "machine",
+            "imds_support": "",
+            "include_deprecated": false,
+            "kernel_id": "",
+            "last_launched_time": "",
+            "most_recent": true,
+            "name": "ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-20250508.1",
+            "name_regex": null,
+            "owner_id": "099720109477",
+            "owners": [
+              "099720109477"
+            ],
+            "platform": "",
+            "platform_details": "Linux/UNIX",
+            "product_codes": [],
+            "public": true,
+            "ramdisk_id": "",
+            "root_device_name": "/dev/sda1",
+            "root_device_type": "ebs",
+            "root_snapshot_id": "snap-03d1e24c6fa1e21cc",
+            "sriov_net_support": "simple",
+            "state": "available",
+            "state_reason": {
+              "code": "UNSET",
+              "message": "UNSET"
+            },
+            "tags": {},
+            "timeouts": null,
+            "tpm_support": "",
+            "uefi_data": null,
+            "usage_operation": "RunInstances",
+            "virtualization_type": "hvm"
+          },
+          "sensitive_attributes": []
+        }
+      ]
+    },
+    {
+      "module": "module.compute",
+      "mode": "data",
+      "type": "aws_iam_instance_profile",
+      "name": "jump_profile",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:iam::654654335668:instance-profile/blakkbrother-dev-us-east-1-blakk-ssm-profile",
+            "create_date": "2025-05-18 21:34:41 +0000 UTC",
+            "id": "AIPAZQ3DQNK2IVHITNB6H",
+            "name": "blakkbrother-dev-us-east-1-blakk-ssm-profile",
+            "path": "/",
+            "role_arn": "arn:aws:iam::654654335668:role/blakkbrother-dev-us-east-1-blakk-ssm-role",
+            "role_id": "AROAZQ3DQNK2F7TTDYZTQ",
+            "role_name": "blakkbrother-dev-us-east-1-blakk-ssm-role"
+          },
+          "sensitive_attributes": []
+        }
+      ]
+    },
+    {
+      "module": "module.compute",
+      "mode": "data",
+      "type": "aws_iam_policy_document",
+      "name": "ecs_task_execution_role",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "id": "2418912581",
+            "json": "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Effect\": \"Allow\",\n      \"Action\": [\n        \"ecr:ListImages\",\n        \"ecr:GetDownloadUrlForLayer\",\n        \"ecr:GetAuthorizationToken\",\n        \"ecr:BatchCheckLayerAvailability\"\n      ]\n    }\n  ]\n}",
+            "minified_json": "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Effect\":\"Allow\",\"Action\":[\"ecr:ListImages\",\"ecr:GetDownloadUrlForLayer\",\"ecr:GetAuthorizationToken\",\"ecr:BatchCheckLayerAvailability\"]}]}",
+            "override_json": null,
+            "override_policy_documents": null,
+            "policy_id": null,
+            "source_json": null,
+            "source_policy_documents": null,
+            "statement": [
+              {
+                "actions": [
+                  "ecr:BatchCheckLayerAvailability",
+                  "ecr:GetAuthorizationToken",
+                  "ecr:GetDownloadUrlForLayer",
+                  "ecr:ListImages"
+                ],
+                "condition": [],
+                "effect": "Allow",
+                "not_actions": [],
+                "not_principals": [],
+                "not_resources": [],
+                "principals": [],
+                "resources": [],
+                "sid": ""
+              }
+            ],
+            "version": "2012-10-17"
+          },
+          "sensitive_attributes": []
+        }
+      ]
+    },
+    {
+      "module": "module.compute",
+      "mode": "data",
+      "type": "aws_iam_role",
+      "name": "ecs_task_exec_role",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:iam::654654335668:role/blakkbrother-dev-us-east-1-blakk-ecs-task-execution-role",
+            "assume_role_policy": "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"ecs-tasks.amazonaws.com\"},\"Action\":\"sts:AssumeRole\"}]}",
+            "create_date": "2025-05-18T21:34:39Z",
+            "description": "",
+            "id": "blakkbrother-dev-us-east-1-blakk-ecs-task-execution-role",
+            "max_session_duration": 3600,
+            "name": "blakkbrother-dev-us-east-1-blakk-ecs-task-execution-role",
+            "path": "/",
+            "permissions_boundary": "",
+            "role_last_used": [
+              {
+                "last_used_date": "",
+                "region": ""
+              }
+            ],
+            "tags": {
+              "Environment": "dev",
+              "Name": "blakkbrother-dev-us-east-1-blakk-ecs-task-execution-role",
+              "Owner": "blakkbrother",
+              "Region": "us-east-1"
+            },
+            "unique_id": "AROAZQ3DQNK2DDAHB5OMO"
+          },
+          "sensitive_attributes": []
+        }
+      ]
+    },
+    {
+      "module": "module.compute",
+      "mode": "data",
+      "type": "aws_iam_role",
+      "name": "ecs_task_role",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:iam::654654335668:role/blakkbrother-dev-us-east-1-blakk-ecs-task-role",
+            "assume_role_policy": "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"ecs-tasks.amazonaws.com\"},\"Action\":\"sts:AssumeRole\"}]}",
+            "create_date": "2025-05-18T21:34:39Z",
+            "description": "",
+            "id": "blakkbrother-dev-us-east-1-blakk-ecs-task-role",
+            "max_session_duration": 3600,
+            "name": "blakkbrother-dev-us-east-1-blakk-ecs-task-role",
+            "path": "/",
+            "permissions_boundary": "",
+            "role_last_used": [
+              {
+                "last_used_date": "",
+                "region": ""
+              }
+            ],
+            "tags": {
+              "Environment": "dev",
+              "Name": "blakkbrother-dev-us-east-1-blakk-ecs-task-role",
+              "Owner": "blakkbrother",
+              "Region": "us-east-1"
+            },
+            "unique_id": "AROAZQ3DQNK2LC4BSYWVD"
+          },
+          "sensitive_attributes": []
+        }
+      ]
+    },
+    {
+      "module": "module.compute",
+      "mode": "data",
+      "type": "aws_region",
+      "name": "current",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "description": "US East (N. Virginia)",
+            "endpoint": "ec2.us-east-1.amazonaws.com",
+            "id": "us-east-1",
+            "name": "us-east-1"
+          },
+          "sensitive_attributes": []
+        }
+      ]
+    },
+    {
+      "module": "module.compute",
+      "mode": "data",
+      "type": "aws_ssm_parameter",
+      "name": "alb_sg_id",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": []
+    },
+    {
+      "module": "module.compute",
+      "mode": "data",
+      "type": "aws_ssm_parameter",
+      "name": "app_subnet_ids",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": []
+    },
+    {
+      "module": "module.compute",
+      "mode": "data",
+      "type": "aws_ssm_parameter",
+      "name": "ecs_sg",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": []
+    },
+    {
+      "module": "module.compute",
+      "mode": "data",
+      "type": "aws_ssm_parameter",
+      "name": "jump_sg_id",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": []
+    },
+    {
+      "module": "module.compute",
+      "mode": "data",
+      "type": "aws_ssm_parameter",
+      "name": "jumpbox_subnet",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": []
+    },
+    {
+      "module": "module.compute",
+      "mode": "data",
+      "type": "aws_ssm_parameter",
+      "name": "vpc_id",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": []
+    },
+    {
+      "module": "module.compute",
+      "mode": "data",
+      "type": "aws_ssm_parameter",
+      "name": "waf_acl_arn",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": []
+    },
+    {
+      "module": "module.compute",
+      "mode": "data",
+      "type": "aws_ssm_parameter",
+      "name": "web_subnet_ids",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": []
+    },
+    {
+      "module": "module.compute",
+      "mode": "managed",
+      "type": "aws_cloudwatch_log_group",
+      "name": "ecs_log_group",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:logs:us-east-1:654654335668:log-group:/ecs/app-logs",
+            "id": "/ecs/app-logs",
+            "kms_key_id": "",
+            "log_group_class": "STANDARD",
+            "name": "/ecs/app-logs",
+            "name_prefix": "",
+            "retention_in_days": 7,
+            "skip_destroy": false,
+            "tags": null,
+            "tags_all": {}
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.iam.aws_iam_instance_profile.ec2_instance_profile",
+            "module.iam.aws_iam_role.ecs_execution_role",
+            "module.iam.aws_iam_role.ecs_task_execution_role",
+            "module.iam.aws_iam_role.ecs_task_role",
+            "module.iam.aws_iam_role.s3_logging_role",
+            "module.iam.aws_iam_role.ssm_role",
+            "module.iam.aws_iam_role_policy_attachment.ecs_execution_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ecs_task_execution_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ecs_task_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.s3_logging_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ssm_role_policy_attachment",
+            "module.iam.data.aws_iam_policy_document.ssm_role_policy",
+            "module.networking.aws_default_route_table.default_route_table",
+            "module.networking.aws_default_security_group.default_sg",
+            "module.networking.aws_eip.nat_eip",
+            "module.networking.aws_internet_gateway.main_igw",
+            "module.networking.aws_nat_gateway.nat_gateway",
+            "module.networking.aws_route_table.app_route_table",
+            "module.networking.aws_route_table.db_route_table",
+            "module.networking.aws_route_table.public_route_table",
+            "module.networking.aws_route_table_association.app_subnet_assoc",
+            "module.networking.aws_route_table_association.db_subnet_assoc",
+            "module.networking.aws_route_table_association.web_subnet_assoc",
+            "module.networking.aws_ssm_parameter.app_subnet_id",
+            "module.networking.aws_ssm_parameter.db_subnet_id",
+            "module.networking.aws_ssm_parameter.igw_id",
+            "module.networking.aws_ssm_parameter.jumpbox_subnet",
+            "module.networking.aws_ssm_parameter.vpc_id",
+            "module.networking.aws_ssm_parameter.web_subnet_id",
+            "module.networking.aws_subnet.app_subnet",
+            "module.networking.aws_subnet.db_subnet",
+            "module.networking.aws_subnet.web_subnet",
+            "module.networking.aws_vpc.main_vpc",
+            "module.networking.data.aws_availability_zones.available",
+            "module.security.aws_security_group.alb_sg",
+            "module.security.aws_security_group.ecs_sg",
+            "module.security.aws_security_group.jump_server_sg",
+            "module.security.aws_security_group.rds_sg",
+            "module.security.aws_ssm_parameter.alb_sg_id",
+            "module.security.aws_ssm_parameter.ecs_sg_id",
+            "module.security.aws_ssm_parameter.jump_server_sg_id",
+            "module.security.aws_ssm_parameter.waf_acl_arn",
+            "module.security.aws_wafv2_web_acl.waf_acl",
+            "module.storage.aws_s3_bucket.log_bucket",
+            "module.storage.aws_s3_bucket_logging.bucket_logging",
+            "module.storage.aws_s3_bucket_public_access_block.Logging_bucket_block_public_access",
+            "module.storage.aws_s3_bucket_server_side_encryption_configuration.bucket_encryption",
+            "module.storage.aws_s3_bucket_versioning.Logging_bucket_versioning"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.compute",
+      "mode": "managed",
+      "type": "aws_ecr_lifecycle_policy",
+      "name": "repo_policy",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "id": "blakkbrother-dev-us-east-1-ecr-repo",
+            "policy": "{\"rules\":[{\"action\":{\"type\":\"expire\"},\"description\":\"Expire images older than 14 days\",\"rulePriority\":1,\"selection\":{\"countNumber\":14,\"countType\":\"sinceImagePushed\",\"countUnit\":\"days\",\"tagStatus\":\"untagged\"}},{\"action\":{\"type\":\"expire\"},\"description\":\"Keep only the 10 most recent tagged images\",\"rulePriority\":2,\"selection\":{\"countNumber\":10,\"countType\":\"imageCountMoreThan\",\"tagPrefixList\":[\"v\",\"release\",\"latest\"],\"tagStatus\":\"tagged\"}},{\"action\":{\"type\":\"expire\"},\"description\":\"Remove images with vulnerabilities after 7 days\",\"rulePriority\":3,\"selection\":{\"countNumber\":7,\"countType\":\"sinceImagePushed\",\"countUnit\":\"days\",\"tagStatus\":\"any\"}}]}",
+            "registry_id": "654654335668",
+            "repository": "blakkbrother-dev-us-east-1-ecr-repo"
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.compute.aws_ecr_repository.ecr_repo",
+            "module.iam.aws_iam_instance_profile.ec2_instance_profile",
+            "module.iam.aws_iam_role.ecs_execution_role",
+            "module.iam.aws_iam_role.ecs_task_execution_role",
+            "module.iam.aws_iam_role.ecs_task_role",
+            "module.iam.aws_iam_role.s3_logging_role",
+            "module.iam.aws_iam_role.ssm_role",
+            "module.iam.aws_iam_role_policy_attachment.ecs_execution_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ecs_task_execution_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ecs_task_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.s3_logging_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ssm_role_policy_attachment",
+            "module.iam.data.aws_iam_policy_document.ssm_role_policy",
+            "module.networking.aws_default_route_table.default_route_table",
+            "module.networking.aws_default_security_group.default_sg",
+            "module.networking.aws_eip.nat_eip",
+            "module.networking.aws_internet_gateway.main_igw",
+            "module.networking.aws_nat_gateway.nat_gateway",
+            "module.networking.aws_route_table.app_route_table",
+            "module.networking.aws_route_table.db_route_table",
+            "module.networking.aws_route_table.public_route_table",
+            "module.networking.aws_route_table_association.app_subnet_assoc",
+            "module.networking.aws_route_table_association.db_subnet_assoc",
+            "module.networking.aws_route_table_association.web_subnet_assoc",
+            "module.networking.aws_ssm_parameter.app_subnet_id",
+            "module.networking.aws_ssm_parameter.db_subnet_id",
+            "module.networking.aws_ssm_parameter.igw_id",
+            "module.networking.aws_ssm_parameter.jumpbox_subnet",
+            "module.networking.aws_ssm_parameter.vpc_id",
+            "module.networking.aws_ssm_parameter.web_subnet_id",
+            "module.networking.aws_subnet.app_subnet",
+            "module.networking.aws_subnet.db_subnet",
+            "module.networking.aws_subnet.web_subnet",
+            "module.networking.aws_vpc.main_vpc",
+            "module.networking.data.aws_availability_zones.available",
+            "module.security.aws_security_group.alb_sg",
+            "module.security.aws_security_group.ecs_sg",
+            "module.security.aws_security_group.jump_server_sg",
+            "module.security.aws_security_group.rds_sg",
+            "module.security.aws_ssm_parameter.alb_sg_id",
+            "module.security.aws_ssm_parameter.ecs_sg_id",
+            "module.security.aws_ssm_parameter.jump_server_sg_id",
+            "module.security.aws_ssm_parameter.waf_acl_arn",
+            "module.security.aws_wafv2_web_acl.waf_acl",
+            "module.storage.aws_s3_bucket.log_bucket",
+            "module.storage.aws_s3_bucket_logging.bucket_logging",
+            "module.storage.aws_s3_bucket_public_access_block.Logging_bucket_block_public_access",
+            "module.storage.aws_s3_bucket_server_side_encryption_configuration.bucket_encryption",
+            "module.storage.aws_s3_bucket_versioning.Logging_bucket_versioning"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.compute",
+      "mode": "managed",
+      "type": "aws_ecr_repository",
+      "name": "ecr_repo",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:ecr:us-east-1:654654335668:repository/blakkbrother-dev-us-east-1-ecr-repo",
+            "encryption_configuration": [
+              {
+                "encryption_type": "AES256",
+                "kms_key": ""
+              }
+            ],
+            "force_delete": null,
+            "id": "blakkbrother-dev-us-east-1-ecr-repo",
+            "image_scanning_configuration": [
+              {
+                "scan_on_push": true
+              }
+            ],
+            "image_tag_mutability": "MUTABLE",
+            "name": "blakkbrother-dev-us-east-1-ecr-repo",
+            "registry_id": "654654335668",
+            "repository_url": "654654335668.dkr.ecr.us-east-1.amazonaws.com/blakkbrother-dev-us-east-1-ecr-repo",
+            "tags": {
+              "Environment": "dev",
+              "Name": "blakkbrother-dev-us-east-1-ecr-repo",
+              "Owner": "blakkbrother",
+              "Region": "us-east-1"
+            },
+            "tags_all": {
+              "Environment": "dev",
+              "Name": "blakkbrother-dev-us-east-1-ecr-repo",
+              "Owner": "blakkbrother",
+              "Region": "us-east-1"
+            },
+            "timeouts": null
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiZGVsZXRlIjoxMjAwMDAwMDAwMDAwfX0=",
+          "dependencies": [
+            "module.iam.aws_iam_instance_profile.ec2_instance_profile",
+            "module.iam.aws_iam_role.ecs_execution_role",
+            "module.iam.aws_iam_role.ecs_task_execution_role",
+            "module.iam.aws_iam_role.ecs_task_role",
+            "module.iam.aws_iam_role.s3_logging_role",
+            "module.iam.aws_iam_role.ssm_role",
+            "module.iam.aws_iam_role_policy_attachment.ecs_execution_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ecs_task_execution_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ecs_task_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.s3_logging_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ssm_role_policy_attachment",
+            "module.iam.data.aws_iam_policy_document.ssm_role_policy",
+            "module.networking.aws_default_route_table.default_route_table",
+            "module.networking.aws_default_security_group.default_sg",
+            "module.networking.aws_eip.nat_eip",
+            "module.networking.aws_internet_gateway.main_igw",
+            "module.networking.aws_nat_gateway.nat_gateway",
+            "module.networking.aws_route_table.app_route_table",
+            "module.networking.aws_route_table.db_route_table",
+            "module.networking.aws_route_table.public_route_table",
+            "module.networking.aws_route_table_association.app_subnet_assoc",
+            "module.networking.aws_route_table_association.db_subnet_assoc",
+            "module.networking.aws_route_table_association.web_subnet_assoc",
+            "module.networking.aws_ssm_parameter.app_subnet_id",
+            "module.networking.aws_ssm_parameter.db_subnet_id",
+            "module.networking.aws_ssm_parameter.igw_id",
+            "module.networking.aws_ssm_parameter.jumpbox_subnet",
+            "module.networking.aws_ssm_parameter.vpc_id",
+            "module.networking.aws_ssm_parameter.web_subnet_id",
+            "module.networking.aws_subnet.app_subnet",
+            "module.networking.aws_subnet.db_subnet",
+            "module.networking.aws_subnet.web_subnet",
+            "module.networking.aws_vpc.main_vpc",
+            "module.networking.data.aws_availability_zones.available",
+            "module.security.aws_security_group.alb_sg",
+            "module.security.aws_security_group.ecs_sg",
+            "module.security.aws_security_group.jump_server_sg",
+            "module.security.aws_security_group.rds_sg",
+            "module.security.aws_ssm_parameter.alb_sg_id",
+            "module.security.aws_ssm_parameter.ecs_sg_id",
+            "module.security.aws_ssm_parameter.jump_server_sg_id",
+            "module.security.aws_ssm_parameter.waf_acl_arn",
+            "module.security.aws_wafv2_web_acl.waf_acl",
+            "module.storage.aws_s3_bucket.log_bucket",
+            "module.storage.aws_s3_bucket_logging.bucket_logging",
+            "module.storage.aws_s3_bucket_public_access_block.Logging_bucket_block_public_access",
+            "module.storage.aws_s3_bucket_server_side_encryption_configuration.bucket_encryption",
+            "module.storage.aws_s3_bucket_versioning.Logging_bucket_versioning"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.compute",
+      "mode": "managed",
+      "type": "aws_ecs_cluster",
+      "name": "cluster",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:ecs:us-east-1:654654335668:cluster/blakkbrother-dev-us-east-1-ecs-cluster",
+            "configuration": [],
+            "id": "arn:aws:ecs:us-east-1:654654335668:cluster/blakkbrother-dev-us-east-1-ecs-cluster",
+            "name": "blakkbrother-dev-us-east-1-ecs-cluster",
+            "service_connect_defaults": [],
+            "setting": [
+              {
+                "name": "containerInsights",
+                "value": "enabled"
+              }
+            ],
+            "tags": {
+              "Environment": "dev",
+              "Name": "blakkbrother-dev-us-east-1-ecs-cluster",
+              "Owner": "blakkbrother",
+              "Region": "us-east-1"
+            },
+            "tags_all": {
+              "Environment": "dev",
+              "Name": "blakkbrother-dev-us-east-1-ecs-cluster",
+              "Owner": "blakkbrother",
+              "Region": "us-east-1"
+            }
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.iam.aws_iam_instance_profile.ec2_instance_profile",
+            "module.iam.aws_iam_role.ecs_execution_role",
+            "module.iam.aws_iam_role.ecs_task_execution_role",
+            "module.iam.aws_iam_role.ecs_task_role",
+            "module.iam.aws_iam_role.s3_logging_role",
+            "module.iam.aws_iam_role.ssm_role",
+            "module.iam.aws_iam_role_policy_attachment.ecs_execution_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ecs_task_execution_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ecs_task_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.s3_logging_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ssm_role_policy_attachment",
+            "module.iam.data.aws_iam_policy_document.ssm_role_policy",
+            "module.networking.aws_default_route_table.default_route_table",
+            "module.networking.aws_default_security_group.default_sg",
+            "module.networking.aws_eip.nat_eip",
+            "module.networking.aws_internet_gateway.main_igw",
+            "module.networking.aws_nat_gateway.nat_gateway",
+            "module.networking.aws_route_table.app_route_table",
+            "module.networking.aws_route_table.db_route_table",
+            "module.networking.aws_route_table.public_route_table",
+            "module.networking.aws_route_table_association.app_subnet_assoc",
+            "module.networking.aws_route_table_association.db_subnet_assoc",
+            "module.networking.aws_route_table_association.web_subnet_assoc",
+            "module.networking.aws_ssm_parameter.app_subnet_id",
+            "module.networking.aws_ssm_parameter.db_subnet_id",
+            "module.networking.aws_ssm_parameter.igw_id",
+            "module.networking.aws_ssm_parameter.jumpbox_subnet",
+            "module.networking.aws_ssm_parameter.vpc_id",
+            "module.networking.aws_ssm_parameter.web_subnet_id",
+            "module.networking.aws_subnet.app_subnet",
+            "module.networking.aws_subnet.db_subnet",
+            "module.networking.aws_subnet.web_subnet",
+            "module.networking.aws_vpc.main_vpc",
+            "module.networking.data.aws_availability_zones.available",
+            "module.security.aws_security_group.alb_sg",
+            "module.security.aws_security_group.ecs_sg",
+            "module.security.aws_security_group.jump_server_sg",
+            "module.security.aws_security_group.rds_sg",
+            "module.security.aws_ssm_parameter.alb_sg_id",
+            "module.security.aws_ssm_parameter.ecs_sg_id",
+            "module.security.aws_ssm_parameter.jump_server_sg_id",
+            "module.security.aws_ssm_parameter.waf_acl_arn",
+            "module.security.aws_wafv2_web_acl.waf_acl",
+            "module.storage.aws_s3_bucket.log_bucket",
+            "module.storage.aws_s3_bucket_logging.bucket_logging",
+            "module.storage.aws_s3_bucket_public_access_block.Logging_bucket_block_public_access",
+            "module.storage.aws_s3_bucket_server_side_encryption_configuration.bucket_encryption",
+            "module.storage.aws_s3_bucket_versioning.Logging_bucket_versioning"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.compute",
+      "mode": "managed",
+      "type": "aws_ecs_task_definition",
+      "name": "task",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 1,
+          "attributes": {
+            "arn": "arn:aws:ecs:us-east-1:654654335668:task-definition/blakkbrother-dev-us-east-1-ecs-task:2",
+            "arn_without_revision": "arn:aws:ecs:us-east-1:654654335668:task-definition/blakkbrother-dev-us-east-1-ecs-task",
+            "container_definitions": "[{\"cpu\":1024,\"environment\":[{\"name\":\"ENV\",\"value\":\"dev\"},{\"name\":\"PORT\",\"value\":\"8080\"}],\"essential\":true,\"healthCheck\":{\"command\":[\"CMD-SHELL\",\"curl -f http://localhost:8080/ || exit 1\"],\"interval\":30,\"retries\":3,\"startPeriod\":60,\"timeout\":5},\"image\":\"654654335668.dkr.ecr.us-east-1.amazonaws.com/blakkbrother-dev-us-east-1-ecr-repo:latest\",\"logConfiguration\":{\"logDriver\":\"awslogs\",\"options\":{\"awslogs-stream-prefix\":\"app\",\"awslogs-group\":\"/ecs/app-logs\",\"awslogs-region\":\"us-east-1\"}},\"memory\":1024,\"mountPoints\":[],\"name\":\"app-container\",\"portMappings\":[{\"containerPort\":8080,\"hostPort\":8080,\"protocol\":\"tcp\"}],\"systemControls\":[],\"volumesFrom\":[]}]",
+            "cpu": "2048",
+            "enable_fault_injection": false,
+            "ephemeral_storage": [],
+            "execution_role_arn": "arn:aws:iam::654654335668:role/blakkbrother-dev-us-east-1-blakk-ecs-task-execution-role",
+            "family": "blakkbrother-dev-us-east-1-ecs-task",
+            "id": "blakkbrother-dev-us-east-1-ecs-task",
+            "inference_accelerator": [],
+            "ipc_mode": "",
+            "memory": "4096",
+            "network_mode": "awsvpc",
+            "pid_mode": "",
+            "placement_constraints": [],
+            "proxy_configuration": [],
+            "requires_compatibilities": [
+              "FARGATE"
+            ],
+            "revision": 2,
+            "runtime_platform": [],
+            "skip_destroy": false,
+            "tags": {
+              "Environment": "dev",
+              "Name": "blakkbrother-dev-us-east-1-ecs-task",
+              "Owner": "blakkbrother",
+              "Region": "us-east-1"
+            },
+            "tags_all": {
+              "Environment": "dev",
+              "Name": "blakkbrother-dev-us-east-1-ecs-task",
+              "Owner": "blakkbrother",
+              "Region": "us-east-1"
+            },
+            "task_role_arn": "arn:aws:iam::654654335668:role/blakkbrother-dev-us-east-1-blakk-ecs-task-role",
+            "track_latest": false,
+            "volume": []
+          },
+          "sensitive_attributes": [],
+          "private": "eyJzY2hlbWFfdmVyc2lvbiI6IjEifQ==",
+          "dependencies": [
+            "module.compute.aws_ecr_repository.ecr_repo",
+            "module.compute.data.aws_iam_role.ecs_task_exec_role",
+            "module.compute.data.aws_iam_role.ecs_task_role",
+            "module.compute.data.aws_region.current",
+            "module.iam.aws_iam_instance_profile.ec2_instance_profile",
+            "module.iam.aws_iam_role.ecs_execution_role",
+            "module.iam.aws_iam_role.ecs_task_execution_role",
+            "module.iam.aws_iam_role.ecs_task_role",
+            "module.iam.aws_iam_role.s3_logging_role",
+            "module.iam.aws_iam_role.ssm_role",
+            "module.iam.aws_iam_role_policy_attachment.ecs_execution_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ecs_task_execution_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ecs_task_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.s3_logging_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ssm_role_policy_attachment",
+            "module.iam.data.aws_iam_policy_document.ssm_role_policy",
+            "module.networking.aws_default_route_table.default_route_table",
+            "module.networking.aws_default_security_group.default_sg",
+            "module.networking.aws_eip.nat_eip",
+            "module.networking.aws_internet_gateway.main_igw",
+            "module.networking.aws_nat_gateway.nat_gateway",
+            "module.networking.aws_route_table.app_route_table",
+            "module.networking.aws_route_table.db_route_table",
+            "module.networking.aws_route_table.public_route_table",
+            "module.networking.aws_route_table_association.app_subnet_assoc",
+            "module.networking.aws_route_table_association.db_subnet_assoc",
+            "module.networking.aws_route_table_association.web_subnet_assoc",
+            "module.networking.aws_ssm_parameter.app_subnet_id",
+            "module.networking.aws_ssm_parameter.db_subnet_id",
+            "module.networking.aws_ssm_parameter.igw_id",
+            "module.networking.aws_ssm_parameter.jumpbox_subnet",
+            "module.networking.aws_ssm_parameter.vpc_id",
+            "module.networking.aws_ssm_parameter.web_subnet_id",
+            "module.networking.aws_subnet.app_subnet",
+            "module.networking.aws_subnet.db_subnet",
+            "module.networking.aws_subnet.web_subnet",
+            "module.networking.aws_vpc.main_vpc",
+            "module.networking.data.aws_availability_zones.available",
+            "module.security.aws_security_group.alb_sg",
+            "module.security.aws_security_group.ecs_sg",
+            "module.security.aws_security_group.jump_server_sg",
+            "module.security.aws_security_group.rds_sg",
+            "module.security.aws_ssm_parameter.alb_sg_id",
+            "module.security.aws_ssm_parameter.ecs_sg_id",
+            "module.security.aws_ssm_parameter.jump_server_sg_id",
+            "module.security.aws_ssm_parameter.waf_acl_arn",
+            "module.security.aws_wafv2_web_acl.waf_acl",
+            "module.storage.aws_s3_bucket.log_bucket",
+            "module.storage.aws_s3_bucket_logging.bucket_logging",
+            "module.storage.aws_s3_bucket_public_access_block.Logging_bucket_block_public_access",
+            "module.storage.aws_s3_bucket_server_side_encryption_configuration.bucket_encryption",
+            "module.storage.aws_s3_bucket_versioning.Logging_bucket_versioning"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.iam",
+      "mode": "data",
+      "type": "aws_iam_policy_document",
+      "name": "ssm_role_policy",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "id": "2851119427",
+            "json": "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Effect\": \"Allow\",\n      \"Action\": \"sts:AssumeRole\",\n      \"Principal\": {\n        \"Service\": \"ec2.amazonaws.com\"\n      }\n    }\n  ]\n}",
+            "minified_json": "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Effect\":\"Allow\",\"Action\":\"sts:AssumeRole\",\"Principal\":{\"Service\":\"ec2.amazonaws.com\"}}]}",
+            "override_json": null,
+            "override_policy_documents": null,
+            "policy_id": null,
+            "source_json": null,
+            "source_policy_documents": null,
+            "statement": [
+              {
+                "actions": [
+                  "sts:AssumeRole"
+                ],
+                "condition": [],
+                "effect": "Allow",
+                "not_actions": [],
+                "not_principals": [],
+                "not_resources": [],
+                "principals": [
+                  {
+                    "identifiers": [
+                      "ec2.amazonaws.com"
+                    ],
+                    "type": "Service"
+                  }
+                ],
+                "resources": [],
+                "sid": ""
+              }
+            ],
+            "version": "2012-10-17"
+          },
+          "sensitive_attributes": []
+        }
+      ]
+    },
+    {
+      "module": "module.iam",
+      "mode": "managed",
+      "type": "aws_iam_instance_profile",
+      "name": "ec2_instance_profile",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:iam::654654335668:instance-profile/blakkbrother-dev-us-east-1-blakk-ssm-profile",
+            "create_date": "2025-05-18T21:34:41Z",
+            "id": "blakkbrother-dev-us-east-1-blakk-ssm-profile",
+            "name": "blakkbrother-dev-us-east-1-blakk-ssm-profile",
+            "name_prefix": "",
+            "path": "/",
+            "role": "blakkbrother-dev-us-east-1-blakk-ssm-role",
+            "tags": null,
+            "tags_all": {},
+            "unique_id": "AIPAZQ3DQNK2IVHITNB6H"
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.iam.aws_iam_role.ssm_role",
+            "module.iam.data.aws_iam_policy_document.ssm_role_policy"
+          ],
+          "create_before_destroy": true
+        }
+      ]
+    },
+    {
+      "module": "module.iam",
+      "mode": "managed",
+      "type": "aws_iam_role",
+      "name": "ecs_execution_role",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:iam::654654335668:role/blakkbrother-dev-us-east-1-blakk-ecs-execution-role",
+            "assume_role_policy": "{\"Statement\":[{\"Action\":\"sts:AssumeRole\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"ecs-tasks.amazonaws.com\"}}],\"Version\":\"2012-10-17\"}",
+            "create_date": "2025-05-18T21:34:39Z",
+            "description": "",
+            "force_detach_policies": false,
+            "id": "blakkbrother-dev-us-east-1-blakk-ecs-execution-role",
+            "inline_policy": [],
+            "managed_policy_arns": [],
+            "max_session_duration": 3600,
+            "name": "blakkbrother-dev-us-east-1-blakk-ecs-execution-role",
+            "name_prefix": "",
+            "path": "/",
+            "permissions_boundary": "",
+            "tags": {
+              "Environment": "dev",
+              "Name": "blakkbrother-dev-us-east-1-blakk-ecs-execution-role",
+              "Owner": "blakkbrother",
+              "Region": "us-east-1"
+            },
+            "tags_all": {
+              "Environment": "dev",
+              "Name": "blakkbrother-dev-us-east-1-blakk-ecs-execution-role",
+              "Owner": "blakkbrother",
+              "Region": "us-east-1"
+            },
+            "unique_id": "AROAZQ3DQNK2FU573XCVG"
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "create_before_destroy": true
+        }
+      ]
+    },
+    {
+      "module": "module.iam",
+      "mode": "managed",
+      "type": "aws_iam_role",
+      "name": "ecs_task_execution_role",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:iam::654654335668:role/blakkbrother-dev-us-east-1-blakk-ecs-task-execution-role",
+            "assume_role_policy": "{\"Statement\":[{\"Action\":\"sts:AssumeRole\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"ecs-tasks.amazonaws.com\"}}],\"Version\":\"2012-10-17\"}",
+            "create_date": "2025-05-18T21:34:39Z",
+            "description": "",
+            "force_detach_policies": false,
+            "id": "blakkbrother-dev-us-east-1-blakk-ecs-task-execution-role",
+            "inline_policy": [],
+            "managed_policy_arns": [],
+            "max_session_duration": 3600,
+            "name": "blakkbrother-dev-us-east-1-blakk-ecs-task-execution-role",
+            "name_prefix": "",
+            "path": "/",
+            "permissions_boundary": "",
+            "tags": {
+              "Environment": "dev",
+              "Name": "blakkbrother-dev-us-east-1-blakk-ecs-task-execution-role",
+              "Owner": "blakkbrother",
+              "Region": "us-east-1"
+            },
+            "tags_all": {
+              "Environment": "dev",
+              "Name": "blakkbrother-dev-us-east-1-blakk-ecs-task-execution-role",
+              "Owner": "blakkbrother",
+              "Region": "us-east-1"
+            },
+            "unique_id": "AROAZQ3DQNK2DDAHB5OMO"
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "create_before_destroy": true
+        }
+      ]
+    },
+    {
+      "module": "module.iam",
+      "mode": "managed",
+      "type": "aws_iam_role",
+      "name": "ecs_task_role",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:iam::654654335668:role/blakkbrother-dev-us-east-1-blakk-ecs-task-role",
+            "assume_role_policy": "{\"Statement\":[{\"Action\":\"sts:AssumeRole\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"ecs-tasks.amazonaws.com\"}}],\"Version\":\"2012-10-17\"}",
+            "create_date": "2025-05-18T21:34:39Z",
+            "description": "",
+            "force_detach_policies": false,
+            "id": "blakkbrother-dev-us-east-1-blakk-ecs-task-role",
+            "inline_policy": [],
+            "managed_policy_arns": [],
+            "max_session_duration": 3600,
+            "name": "blakkbrother-dev-us-east-1-blakk-ecs-task-role",
+            "name_prefix": "",
+            "path": "/",
+            "permissions_boundary": "",
+            "tags": {
+              "Environment": "dev",
+              "Name": "blakkbrother-dev-us-east-1-blakk-ecs-task-role",
+              "Owner": "blakkbrother",
+              "Region": "us-east-1"
+            },
+            "tags_all": {
+              "Environment": "dev",
+              "Name": "blakkbrother-dev-us-east-1-blakk-ecs-task-role",
+              "Owner": "blakkbrother",
+              "Region": "us-east-1"
+            },
+            "unique_id": "AROAZQ3DQNK2LC4BSYWVD"
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "create_before_destroy": true
+        }
+      ]
+    },
+    {
+      "module": "module.iam",
+      "mode": "managed",
+      "type": "aws_iam_role",
+      "name": "s3_logging_role",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:iam::654654335668:role/blakkbrother-dev-us-east-1-blakk-s3-logging-role",
+            "assume_role_policy": "{\"Statement\":[{\"Action\":\"sts:AssumeRole\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"ec2.amazonaws.com\"}}],\"Version\":\"2012-10-17\"}",
+            "create_date": "2025-05-18T21:34:39Z",
+            "description": "",
+            "force_detach_policies": false,
+            "id": "blakkbrother-dev-us-east-1-blakk-s3-logging-role",
+            "inline_policy": [],
+            "managed_policy_arns": [],
+            "max_session_duration": 3600,
+            "name": "blakkbrother-dev-us-east-1-blakk-s3-logging-role",
+            "name_prefix": "",
+            "path": "/",
+            "permissions_boundary": "",
+            "tags": {
+              "Environment": "dev",
+              "Name": "blakkbrother-dev-us-east-1-blakk-s3-logging-role",
+              "Owner": "blakkbrother",
+              "Region": "us-east-1"
+            },
+            "tags_all": {
+              "Environment": "dev",
+              "Name": "blakkbrother-dev-us-east-1-blakk-s3-logging-role",
+              "Owner": "blakkbrother",
+              "Region": "us-east-1"
+            },
+            "unique_id": "AROAZQ3DQNK2CWQWPC6OH"
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "create_before_destroy": true
+        }
+      ]
+    },
+    {
+      "module": "module.iam",
+      "mode": "managed",
+      "type": "aws_iam_role",
+      "name": "ssm_role",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:iam::654654335668:role/blakkbrother-dev-us-east-1-blakk-ssm-role",
+            "assume_role_policy": "{\"Statement\":[{\"Action\":\"sts:AssumeRole\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"ec2.amazonaws.com\"}}],\"Version\":\"2012-10-17\"}",
+            "create_date": "2025-05-18T21:34:39Z",
+            "description": "",
+            "force_detach_policies": false,
+            "id": "blakkbrother-dev-us-east-1-blakk-ssm-role",
+            "inline_policy": [],
+            "managed_policy_arns": [],
+            "max_session_duration": 3600,
+            "name": "blakkbrother-dev-us-east-1-blakk-ssm-role",
+            "name_prefix": "",
+            "path": "/",
+            "permissions_boundary": "",
+            "tags": {
+              "Environment": "dev",
+              "Name": "blakkbrother-dev-us-east-1-blakk-ssm-role",
+              "Owner": "blakkbrother",
+              "Region": "us-east-1"
+            },
+            "tags_all": {
+              "Environment": "dev",
+              "Name": "blakkbrother-dev-us-east-1-blakk-ssm-role",
+              "Owner": "blakkbrother",
+              "Region": "us-east-1"
+            },
+            "unique_id": "AROAZQ3DQNK2F7TTDYZTQ"
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.iam.data.aws_iam_policy_document.ssm_role_policy"
+          ],
+          "create_before_destroy": true
+        }
+      ]
+    },
+    {
+      "module": "module.iam",
+      "mode": "managed",
+      "type": "aws_iam_role_policy_attachment",
+      "name": "ecs_execution_role_policy_attachment",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "index_key": "arn:aws:iam::aws:policy/AmazonECS_FullAccess",
+          "schema_version": 0,
+          "attributes": {
+            "id": "blakkbrother-dev-us-east-1-blakk-ecs-execution-role-20250518213440848300000003",
+            "policy_arn": "arn:aws:iam::aws:policy/AmazonECS_FullAccess",
+            "role": "blakkbrother-dev-us-east-1-blakk-ecs-execution-role"
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.iam.aws_iam_role.ecs_execution_role"
+          ],
+          "create_before_destroy": true
+        }
+      ]
+    },
+    {
+      "module": "module.iam",
+      "mode": "managed",
+      "type": "aws_iam_role_policy_attachment",
+      "name": "ecs_task_execution_role_policy_attachment",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "index_key": "arn:aws:iam::aws:policy/AmazonECS_FullAccess",
+          "schema_version": 0,
+          "attributes": {
+            "id": "blakkbrother-dev-us-east-1-blakk-ecs-task-execution-role-20250518213440863500000005",
+            "policy_arn": "arn:aws:iam::aws:policy/AmazonECS_FullAccess",
+            "role": "blakkbrother-dev-us-east-1-blakk-ecs-task-execution-role"
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.iam.aws_iam_role.ecs_task_execution_role"
+          ],
+          "create_before_destroy": true
+        }
+      ]
+    },
+    {
+      "module": "module.iam",
+      "mode": "managed",
+      "type": "aws_iam_role_policy_attachment",
+      "name": "ecs_task_role_policy_attachment",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "index_key": "arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy",
+          "schema_version": 0,
+          "attributes": {
+            "id": "blakkbrother-dev-us-east-1-blakk-ecs-task-role-20250518213440835100000001",
+            "policy_arn": "arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy",
+            "role": "blakkbrother-dev-us-east-1-blakk-ecs-task-role"
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.iam.aws_iam_role.ecs_task_role"
+          ],
+          "create_before_destroy": true
+        }
+      ]
+    },
+    {
+      "module": "module.iam",
+      "mode": "managed",
+      "type": "aws_iam_role_policy_attachment",
+      "name": "s3_logging_role_policy_attachment",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "index_key": "arn:aws:iam::aws:policy/AmazonS3FullAccess",
+          "schema_version": 0,
+          "attributes": {
+            "id": "blakkbrother-dev-us-east-1-blakk-s3-logging-role-20250518213440856700000004",
+            "policy_arn": "arn:aws:iam::aws:policy/AmazonS3FullAccess",
+            "role": "blakkbrother-dev-us-east-1-blakk-s3-logging-role"
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.iam.aws_iam_role.s3_logging_role"
+          ],
+          "create_before_destroy": true
+        }
+      ]
+    },
+    {
+      "module": "module.iam",
+      "mode": "managed",
+      "type": "aws_iam_role_policy_attachment",
+      "name": "ssm_role_policy_attachment",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "index_key": "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore",
+          "schema_version": 0,
+          "attributes": {
+            "id": "blakkbrother-dev-us-east-1-blakk-ssm-role-20250518213441245800000006",
+            "policy_arn": "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore",
+            "role": "blakkbrother-dev-us-east-1-blakk-ssm-role"
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.iam.aws_iam_role.ssm_role",
+            "module.iam.data.aws_iam_policy_document.ssm_role_policy"
+          ],
+          "create_before_destroy": true
+        },
+        {
+          "index_key": "arn:aws:iam::aws:policy/service-role/AmazonEC2RoleforSSM",
+          "schema_version": 0,
+          "attributes": {
+            "id": "blakkbrother-dev-us-east-1-blakk-ssm-role-20250518213440837500000002",
+            "policy_arn": "arn:aws:iam::aws:policy/service-role/AmazonEC2RoleforSSM",
+            "role": "blakkbrother-dev-us-east-1-blakk-ssm-role"
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.iam.aws_iam_role.ssm_role",
+            "module.iam.data.aws_iam_policy_document.ssm_role_policy"
+          ],
+          "create_before_destroy": true
+        }
+      ]
+    },
+    {
+      "module": "module.networking",
+      "mode": "data",
+      "type": "aws_availability_zones",
+      "name": "available",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "all_availability_zones": null,
+            "exclude_names": null,
+            "exclude_zone_ids": null,
+            "filter": null,
+            "group_names": [
+              "us-east-1-zg-1"
+            ],
+            "id": "us-east-1",
+            "names": [
+              "us-east-1a",
+              "us-east-1b",
+              "us-east-1c",
+              "us-east-1d",
+              "us-east-1e",
+              "us-east-1f"
+            ],
+            "state": "available",
+            "timeouts": null,
+            "zone_ids": [
+              "use1-az1",
+              "use1-az2",
+              "use1-az4",
+              "use1-az6",
+              "use1-az3",
+              "use1-az5"
+            ]
+          },
+          "sensitive_attributes": []
+        }
+      ]
+    },
+    {
+      "module": "module.networking",
+      "mode": "managed",
+      "type": "aws_default_route_table",
+      "name": "default_route_table",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:ec2:us-east-1:654654335668:route-table/rtb-0f2f48c6b2c7be116",
+            "default_route_table_id": "rtb-0f2f48c6b2c7be116",
+            "id": "rtb-0f2f48c6b2c7be116",
+            "owner_id": "654654335668",
+            "propagating_vgws": null,
+            "route": [],
+            "tags": {
+              "Name": "DefaultRT: Do not Use"
+            },
+            "tags_all": {
+              "Name": "DefaultRT: Do not Use"
+            },
+            "timeouts": null,
+            "vpc_id": "vpc-02aef8e1ba14b3bca"
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxMjAwMDAwMDAwMDAsInVwZGF0ZSI6MTIwMDAwMDAwMDAwfX0=",
+          "dependencies": [
+            "module.iam.aws_iam_instance_profile.ec2_instance_profile",
+            "module.iam.aws_iam_role.ecs_execution_role",
+            "module.iam.aws_iam_role.ecs_task_execution_role",
+            "module.iam.aws_iam_role.ecs_task_role",
+            "module.iam.aws_iam_role.s3_logging_role",
+            "module.iam.aws_iam_role.ssm_role",
+            "module.iam.aws_iam_role_policy_attachment.ecs_execution_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ecs_task_execution_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ecs_task_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.s3_logging_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ssm_role_policy_attachment",
+            "module.iam.data.aws_iam_policy_document.ssm_role_policy",
+            "module.networking.aws_vpc.main_vpc",
+            "module.storage.aws_s3_bucket.log_bucket",
+            "module.storage.aws_s3_bucket_logging.bucket_logging",
+            "module.storage.aws_s3_bucket_public_access_block.Logging_bucket_block_public_access",
+            "module.storage.aws_s3_bucket_server_side_encryption_configuration.bucket_encryption",
+            "module.storage.aws_s3_bucket_versioning.Logging_bucket_versioning"
+          ],
+          "create_before_destroy": true
+        }
+      ]
+    },
+    {
+      "module": "module.networking",
+      "mode": "managed",
+      "type": "aws_default_security_group",
+      "name": "default_sg",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 1,
+          "attributes": {
+            "arn": "arn:aws:ec2:us-east-1:654654335668:security-group/sg-000f67ed74539ae26",
+            "description": "default VPC security group",
+            "egress": [],
+            "id": "sg-000f67ed74539ae26",
+            "ingress": [],
+            "name": "default",
+            "name_prefix": "",
+            "owner_id": "654654335668",
+            "revoke_rules_on_delete": false,
+            "tags": {
+              "Name": "DefaultSG: Do not Use"
+            },
+            "tags_all": {
+              "Name": "DefaultSG: Do not Use"
+            },
+            "vpc_id": "vpc-02aef8e1ba14b3bca"
+          },
+          "sensitive_attributes": [],
+          "private": "eyJzY2hlbWFfdmVyc2lvbiI6IjEifQ==",
+          "dependencies": [
+            "module.iam.aws_iam_instance_profile.ec2_instance_profile",
+            "module.iam.aws_iam_role.ecs_execution_role",
+            "module.iam.aws_iam_role.ecs_task_execution_role",
+            "module.iam.aws_iam_role.ecs_task_role",
+            "module.iam.aws_iam_role.s3_logging_role",
+            "module.iam.aws_iam_role.ssm_role",
+            "module.iam.aws_iam_role_policy_attachment.ecs_execution_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ecs_task_execution_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ecs_task_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.s3_logging_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ssm_role_policy_attachment",
+            "module.iam.data.aws_iam_policy_document.ssm_role_policy",
+            "module.networking.aws_vpc.main_vpc",
+            "module.storage.aws_s3_bucket.log_bucket",
+            "module.storage.aws_s3_bucket_logging.bucket_logging",
+            "module.storage.aws_s3_bucket_public_access_block.Logging_bucket_block_public_access",
+            "module.storage.aws_s3_bucket_server_side_encryption_configuration.bucket_encryption",
+            "module.storage.aws_s3_bucket_versioning.Logging_bucket_versioning"
+          ],
+          "create_before_destroy": true
+        }
+      ]
+    },
+    {
+      "module": "module.networking",
+      "mode": "managed",
+      "type": "aws_eip",
+      "name": "nat_eip",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "address": null,
+            "allocation_id": "eipalloc-03936fbab8aa0f4a1",
+            "arn": "arn:aws:ec2:us-east-1:654654335668:elastic-ip/eipalloc-03936fbab8aa0f4a1",
+            "associate_with_private_ip": null,
+            "association_id": "",
+            "carrier_ip": "",
+            "customer_owned_ip": "",
+            "customer_owned_ipv4_pool": "",
+            "domain": "vpc",
+            "id": "eipalloc-03936fbab8aa0f4a1",
+            "instance": "",
+            "ipam_pool_id": null,
+            "network_border_group": "us-east-1",
+            "network_interface": "",
+            "private_dns": null,
+            "private_ip": "",
+            "ptr_record": "",
+            "public_dns": "ec2-52-72-181-96.compute-1.amazonaws.com",
+            "public_ip": "52.72.181.96",
+            "public_ipv4_pool": "amazon",
+            "tags": {
+              "Environment": "dev",
+              "Name": "blakkbrother-dev-us-east-1-nat-eip",
+              "Owner": "blakkbrother",
+              "Region": "us-east-1"
+            },
+            "tags_all": {
+              "Environment": "dev",
+              "Name": "blakkbrother-dev-us-east-1-nat-eip",
+              "Owner": "blakkbrother",
+              "Region": "us-east-1"
+            },
+            "timeouts": null,
+            "vpc": true
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiZGVsZXRlIjoxODAwMDAwMDAwMDAsInJlYWQiOjkwMDAwMDAwMDAwMCwidXBkYXRlIjozMDAwMDAwMDAwMDB9fQ==",
+          "dependencies": [
+            "module.iam.aws_iam_instance_profile.ec2_instance_profile",
+            "module.iam.aws_iam_role.ecs_execution_role",
+            "module.iam.aws_iam_role.ecs_task_execution_role",
+            "module.iam.aws_iam_role.ecs_task_role",
+            "module.iam.aws_iam_role.s3_logging_role",
+            "module.iam.aws_iam_role.ssm_role",
+            "module.iam.aws_iam_role_policy_attachment.ecs_execution_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ecs_task_execution_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ecs_task_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.s3_logging_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ssm_role_policy_attachment",
+            "module.iam.data.aws_iam_policy_document.ssm_role_policy",
+            "module.storage.aws_s3_bucket.log_bucket",
+            "module.storage.aws_s3_bucket_logging.bucket_logging",
+            "module.storage.aws_s3_bucket_public_access_block.Logging_bucket_block_public_access",
+            "module.storage.aws_s3_bucket_server_side_encryption_configuration.bucket_encryption",
+            "module.storage.aws_s3_bucket_versioning.Logging_bucket_versioning"
+          ],
+          "create_before_destroy": true
+        }
+      ]
+    },
+    {
+      "module": "module.networking",
+      "mode": "managed",
+      "type": "aws_internet_gateway",
+      "name": "main_igw",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:ec2:us-east-1:654654335668:internet-gateway/igw-07d388cff637b0709",
+            "id": "igw-07d388cff637b0709",
+            "owner_id": "654654335668",
+            "tags": {
+              "Environment": "dev",
+              "Name": "blakkbrother-dev-us-east-1-igw",
+              "Owner": "blakkbrother",
+              "Region": "us-east-1"
+            },
+            "tags_all": {
+              "Environment": "dev",
+              "Name": "blakkbrother-dev-us-east-1-igw",
+              "Owner": "blakkbrother",
+              "Region": "us-east-1"
+            },
+            "timeouts": null,
+            "vpc_id": "vpc-02aef8e1ba14b3bca"
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxMjAwMDAwMDAwMDAwLCJkZWxldGUiOjEyMDAwMDAwMDAwMDAsInVwZGF0ZSI6MTIwMDAwMDAwMDAwMH19",
+          "dependencies": [
+            "module.iam.aws_iam_instance_profile.ec2_instance_profile",
+            "module.iam.aws_iam_role.ecs_execution_role",
+            "module.iam.aws_iam_role.ecs_task_execution_role",
+            "module.iam.aws_iam_role.ecs_task_role",
+            "module.iam.aws_iam_role.s3_logging_role",
+            "module.iam.aws_iam_role.ssm_role",
+            "module.iam.aws_iam_role_policy_attachment.ecs_execution_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ecs_task_execution_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ecs_task_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.s3_logging_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ssm_role_policy_attachment",
+            "module.iam.data.aws_iam_policy_document.ssm_role_policy",
+            "module.networking.aws_vpc.main_vpc",
+            "module.storage.aws_s3_bucket.log_bucket",
+            "module.storage.aws_s3_bucket_logging.bucket_logging",
+            "module.storage.aws_s3_bucket_public_access_block.Logging_bucket_block_public_access",
+            "module.storage.aws_s3_bucket_server_side_encryption_configuration.bucket_encryption",
+            "module.storage.aws_s3_bucket_versioning.Logging_bucket_versioning"
+          ],
+          "create_before_destroy": true
+        }
+      ]
+    },
+    {
+      "module": "module.networking",
+      "mode": "managed",
+      "type": "aws_nat_gateway",
+      "name": "nat_gateway",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "allocation_id": "eipalloc-03936fbab8aa0f4a1",
+            "association_id": "eipassoc-091dd1797c47aca82",
+            "connectivity_type": "public",
+            "id": "nat-01cedce3cd9c02283",
+            "network_interface_id": "eni-0dbab1cbcfa699cb5",
+            "private_ip": "10.0.0.211",
+            "public_ip": "52.72.181.96",
+            "secondary_allocation_ids": null,
+            "secondary_private_ip_address_count": 0,
+            "secondary_private_ip_addresses": [],
+            "subnet_id": "subnet-01582d36436fd3242",
+            "tags": {
+              "Environment": "dev",
+              "Name": "blakkbrother-dev-us-east-1-ngw",
+              "Owner": "blakkbrother",
+              "Region": "us-east-1"
+            },
+            "tags_all": {
+              "Environment": "dev",
+              "Name": "blakkbrother-dev-us-east-1-ngw",
+              "Owner": "blakkbrother",
+              "Region": "us-east-1"
+            },
+            "timeouts": null
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjo2MDAwMDAwMDAwMDAsImRlbGV0ZSI6MTgwMDAwMDAwMDAwMCwidXBkYXRlIjo2MDAwMDAwMDAwMDB9fQ==",
+          "dependencies": [
+            "module.iam.aws_iam_instance_profile.ec2_instance_profile",
+            "module.iam.aws_iam_role.ecs_execution_role",
+            "module.iam.aws_iam_role.ecs_task_execution_role",
+            "module.iam.aws_iam_role.ecs_task_role",
+            "module.iam.aws_iam_role.s3_logging_role",
+            "module.iam.aws_iam_role.ssm_role",
+            "module.iam.aws_iam_role_policy_attachment.ecs_execution_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ecs_task_execution_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ecs_task_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.s3_logging_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ssm_role_policy_attachment",
+            "module.iam.data.aws_iam_policy_document.ssm_role_policy",
+            "module.networking.aws_eip.nat_eip",
+            "module.networking.aws_subnet.web_subnet",
+            "module.networking.aws_vpc.main_vpc",
+            "module.networking.data.aws_availability_zones.available",
+            "module.storage.aws_s3_bucket.log_bucket",
+            "module.storage.aws_s3_bucket_logging.bucket_logging",
+            "module.storage.aws_s3_bucket_public_access_block.Logging_bucket_block_public_access",
+            "module.storage.aws_s3_bucket_server_side_encryption_configuration.bucket_encryption",
+            "module.storage.aws_s3_bucket_versioning.Logging_bucket_versioning"
+          ],
+          "create_before_destroy": true
+        }
+      ]
+    },
+    {
+      "module": "module.networking",
+      "mode": "managed",
+      "type": "aws_route_table",
+      "name": "app_route_table",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:ec2:us-east-1:654654335668:route-table/rtb-0fc94589c9ef20f24",
+            "id": "rtb-0fc94589c9ef20f24",
+            "owner_id": "654654335668",
+            "propagating_vgws": [],
+            "route": [
+              {
+                "carrier_gateway_id": "",
+                "cidr_block": "0.0.0.0/0",
+                "core_network_arn": "",
+                "destination_prefix_list_id": "",
+                "egress_only_gateway_id": "",
+                "gateway_id": "",
+                "ipv6_cidr_block": "",
+                "local_gateway_id": "",
+                "nat_gateway_id": "nat-01cedce3cd9c02283",
+                "network_interface_id": "",
+                "transit_gateway_id": "",
+                "vpc_endpoint_id": "",
+                "vpc_peering_connection_id": ""
+              }
+            ],
+            "tags": {
+              "Environment": "dev",
+              "Name": "blakkbrother-dev-us-east-1-app-rtb",
+              "Owner": "blakkbrother",
+              "Region": "us-east-1"
+            },
+            "tags_all": {
+              "Environment": "dev",
+              "Name": "blakkbrother-dev-us-east-1-app-rtb",
+              "Owner": "blakkbrother",
+              "Region": "us-east-1"
+            },
+            "timeouts": null,
+            "vpc_id": "vpc-02aef8e1ba14b3bca"
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjozMDAwMDAwMDAwMDAsImRlbGV0ZSI6MzAwMDAwMDAwMDAwLCJ1cGRhdGUiOjEyMDAwMDAwMDAwMH19",
+          "dependencies": [
+            "module.iam.aws_iam_instance_profile.ec2_instance_profile",
+            "module.iam.aws_iam_role.ecs_execution_role",
+            "module.iam.aws_iam_role.ecs_task_execution_role",
+            "module.iam.aws_iam_role.ecs_task_role",
+            "module.iam.aws_iam_role.s3_logging_role",
+            "module.iam.aws_iam_role.ssm_role",
+            "module.iam.aws_iam_role_policy_attachment.ecs_execution_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ecs_task_execution_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ecs_task_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.s3_logging_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ssm_role_policy_attachment",
+            "module.iam.data.aws_iam_policy_document.ssm_role_policy",
+            "module.networking.aws_eip.nat_eip",
+            "module.networking.aws_nat_gateway.nat_gateway",
+            "module.networking.aws_subnet.web_subnet",
+            "module.networking.aws_vpc.main_vpc",
+            "module.networking.data.aws_availability_zones.available",
+            "module.storage.aws_s3_bucket.log_bucket",
+            "module.storage.aws_s3_bucket_logging.bucket_logging",
+            "module.storage.aws_s3_bucket_public_access_block.Logging_bucket_block_public_access",
+            "module.storage.aws_s3_bucket_server_side_encryption_configuration.bucket_encryption",
+            "module.storage.aws_s3_bucket_versioning.Logging_bucket_versioning"
+          ],
+          "create_before_destroy": true
+        }
+      ]
+    },
+    {
+      "module": "module.networking",
+      "mode": "managed",
+      "type": "aws_route_table",
+      "name": "db_route_table",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:ec2:us-east-1:654654335668:route-table/rtb-01632835050044003",
+            "id": "rtb-01632835050044003",
+            "owner_id": "654654335668",
+            "propagating_vgws": [],
+            "route": [
+              {
+                "carrier_gateway_id": "",
+                "cidr_block": "0.0.0.0/0",
+                "core_network_arn": "",
+                "destination_prefix_list_id": "",
+                "egress_only_gateway_id": "",
+                "gateway_id": "",
+                "ipv6_cidr_block": "",
+                "local_gateway_id": "",
+                "nat_gateway_id": "nat-01cedce3cd9c02283",
+                "network_interface_id": "",
+                "transit_gateway_id": "",
+                "vpc_endpoint_id": "",
+                "vpc_peering_connection_id": ""
+              }
+            ],
+            "tags": {
+              "Environment": "dev",
+              "Name": "blakkbrother-dev-us-east-1-db-rtb",
+              "Owner": "blakkbrother",
+              "Region": "us-east-1"
+            },
+            "tags_all": {
+              "Environment": "dev",
+              "Name": "blakkbrother-dev-us-east-1-db-rtb",
+              "Owner": "blakkbrother",
+              "Region": "us-east-1"
+            },
+            "timeouts": null,
+            "vpc_id": "vpc-02aef8e1ba14b3bca"
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjozMDAwMDAwMDAwMDAsImRlbGV0ZSI6MzAwMDAwMDAwMDAwLCJ1cGRhdGUiOjEyMDAwMDAwMDAwMH19",
+          "dependencies": [
+            "module.iam.aws_iam_instance_profile.ec2_instance_profile",
+            "module.iam.aws_iam_role.ecs_execution_role",
+            "module.iam.aws_iam_role.ecs_task_execution_role",
+            "module.iam.aws_iam_role.ecs_task_role",
+            "module.iam.aws_iam_role.s3_logging_role",
+            "module.iam.aws_iam_role.ssm_role",
+            "module.iam.aws_iam_role_policy_attachment.ecs_execution_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ecs_task_execution_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ecs_task_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.s3_logging_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ssm_role_policy_attachment",
+            "module.iam.data.aws_iam_policy_document.ssm_role_policy",
+            "module.networking.aws_eip.nat_eip",
+            "module.networking.aws_nat_gateway.nat_gateway",
+            "module.networking.aws_subnet.web_subnet",
+            "module.networking.aws_vpc.main_vpc",
+            "module.networking.data.aws_availability_zones.available",
+            "module.storage.aws_s3_bucket.log_bucket",
+            "module.storage.aws_s3_bucket_logging.bucket_logging",
+            "module.storage.aws_s3_bucket_public_access_block.Logging_bucket_block_public_access",
+            "module.storage.aws_s3_bucket_server_side_encryption_configuration.bucket_encryption",
+            "module.storage.aws_s3_bucket_versioning.Logging_bucket_versioning"
+          ],
+          "create_before_destroy": true
+        }
+      ]
+    },
+    {
+      "module": "module.networking",
+      "mode": "managed",
+      "type": "aws_route_table",
+      "name": "public_route_table",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:ec2:us-east-1:654654335668:route-table/rtb-0be02bd5dda555421",
+            "id": "rtb-0be02bd5dda555421",
+            "owner_id": "654654335668",
+            "propagating_vgws": [],
+            "route": [
+              {
+                "carrier_gateway_id": "",
+                "cidr_block": "0.0.0.0/0",
+                "core_network_arn": "",
+                "destination_prefix_list_id": "",
+                "egress_only_gateway_id": "",
+                "gateway_id": "igw-07d388cff637b0709",
+                "ipv6_cidr_block": "",
+                "local_gateway_id": "",
+                "nat_gateway_id": "",
+                "network_interface_id": "",
+                "transit_gateway_id": "",
+                "vpc_endpoint_id": "",
+                "vpc_peering_connection_id": ""
+              }
+            ],
+            "tags": {
+              "Environment": "dev",
+              "Name": "blakkbrother-dev-us-east-1-pub-rtb",
+              "Owner": "blakkbrother",
+              "Region": "us-east-1"
+            },
+            "tags_all": {
+              "Environment": "dev",
+              "Name": "blakkbrother-dev-us-east-1-pub-rtb",
+              "Owner": "blakkbrother",
+              "Region": "us-east-1"
+            },
+            "timeouts": null,
+            "vpc_id": "vpc-02aef8e1ba14b3bca"
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjozMDAwMDAwMDAwMDAsImRlbGV0ZSI6MzAwMDAwMDAwMDAwLCJ1cGRhdGUiOjEyMDAwMDAwMDAwMH19",
+          "dependencies": [
+            "module.iam.aws_iam_instance_profile.ec2_instance_profile",
+            "module.iam.aws_iam_role.ecs_execution_role",
+            "module.iam.aws_iam_role.ecs_task_execution_role",
+            "module.iam.aws_iam_role.ecs_task_role",
+            "module.iam.aws_iam_role.s3_logging_role",
+            "module.iam.aws_iam_role.ssm_role",
+            "module.iam.aws_iam_role_policy_attachment.ecs_execution_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ecs_task_execution_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ecs_task_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.s3_logging_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ssm_role_policy_attachment",
+            "module.iam.data.aws_iam_policy_document.ssm_role_policy",
+            "module.networking.aws_internet_gateway.main_igw",
+            "module.networking.aws_vpc.main_vpc",
+            "module.storage.aws_s3_bucket.log_bucket",
+            "module.storage.aws_s3_bucket_logging.bucket_logging",
+            "module.storage.aws_s3_bucket_public_access_block.Logging_bucket_block_public_access",
+            "module.storage.aws_s3_bucket_server_side_encryption_configuration.bucket_encryption",
+            "module.storage.aws_s3_bucket_versioning.Logging_bucket_versioning"
+          ],
+          "create_before_destroy": true
+        }
+      ]
+    },
+    {
+      "module": "module.networking",
+      "mode": "managed",
+      "type": "aws_route_table_association",
+      "name": "app_subnet_assoc",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "index_key": 0,
+          "schema_version": 0,
+          "attributes": {
+            "gateway_id": "",
+            "id": "rtbassoc-0b953cf79646e6e7b",
+            "route_table_id": "rtb-0fc94589c9ef20f24",
+            "subnet_id": "subnet-0344c23dce6c23338",
+            "timeouts": null
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjozMDAwMDAwMDAwMDAsImRlbGV0ZSI6MzAwMDAwMDAwMDAwLCJ1cGRhdGUiOjEyMDAwMDAwMDAwMH19",
+          "dependencies": [
+            "module.iam.aws_iam_instance_profile.ec2_instance_profile",
+            "module.iam.aws_iam_role.ecs_execution_role",
+            "module.iam.aws_iam_role.ecs_task_execution_role",
+            "module.iam.aws_iam_role.ecs_task_role",
+            "module.iam.aws_iam_role.s3_logging_role",
+            "module.iam.aws_iam_role.ssm_role",
+            "module.iam.aws_iam_role_policy_attachment.ecs_execution_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ecs_task_execution_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ecs_task_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.s3_logging_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ssm_role_policy_attachment",
+            "module.iam.data.aws_iam_policy_document.ssm_role_policy",
+            "module.networking.aws_eip.nat_eip",
+            "module.networking.aws_nat_gateway.nat_gateway",
+            "module.networking.aws_route_table.app_route_table",
+            "module.networking.aws_subnet.app_subnet",
+            "module.networking.aws_subnet.web_subnet",
+            "module.networking.aws_vpc.main_vpc",
+            "module.networking.data.aws_availability_zones.available",
+            "module.storage.aws_s3_bucket.log_bucket",
+            "module.storage.aws_s3_bucket_logging.bucket_logging",
+            "module.storage.aws_s3_bucket_public_access_block.Logging_bucket_block_public_access",
+            "module.storage.aws_s3_bucket_server_side_encryption_configuration.bucket_encryption",
+            "module.storage.aws_s3_bucket_versioning.Logging_bucket_versioning"
+          ],
+          "create_before_destroy": true
+        },
+        {
+          "index_key": 1,
+          "schema_version": 0,
+          "attributes": {
+            "gateway_id": "",
+            "id": "rtbassoc-0d0401bd7b094767b",
+            "route_table_id": "rtb-0fc94589c9ef20f24",
+            "subnet_id": "subnet-066957bb66e3b715f",
+            "timeouts": null
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjozMDAwMDAwMDAwMDAsImRlbGV0ZSI6MzAwMDAwMDAwMDAwLCJ1cGRhdGUiOjEyMDAwMDAwMDAwMH19",
+          "dependencies": [
+            "module.iam.aws_iam_instance_profile.ec2_instance_profile",
+            "module.iam.aws_iam_role.ecs_execution_role",
+            "module.iam.aws_iam_role.ecs_task_execution_role",
+            "module.iam.aws_iam_role.ecs_task_role",
+            "module.iam.aws_iam_role.s3_logging_role",
+            "module.iam.aws_iam_role.ssm_role",
+            "module.iam.aws_iam_role_policy_attachment.ecs_execution_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ecs_task_execution_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ecs_task_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.s3_logging_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ssm_role_policy_attachment",
+            "module.iam.data.aws_iam_policy_document.ssm_role_policy",
+            "module.networking.aws_eip.nat_eip",
+            "module.networking.aws_nat_gateway.nat_gateway",
+            "module.networking.aws_route_table.app_route_table",
+            "module.networking.aws_subnet.app_subnet",
+            "module.networking.aws_subnet.web_subnet",
+            "module.networking.aws_vpc.main_vpc",
+            "module.networking.data.aws_availability_zones.available",
+            "module.storage.aws_s3_bucket.log_bucket",
+            "module.storage.aws_s3_bucket_logging.bucket_logging",
+            "module.storage.aws_s3_bucket_public_access_block.Logging_bucket_block_public_access",
+            "module.storage.aws_s3_bucket_server_side_encryption_configuration.bucket_encryption",
+            "module.storage.aws_s3_bucket_versioning.Logging_bucket_versioning"
+          ],
+          "create_before_destroy": true
+        }
+      ]
+    },
+    {
+      "module": "module.networking",
+      "mode": "managed",
+      "type": "aws_route_table_association",
+      "name": "db_subnet_assoc",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "index_key": 0,
+          "schema_version": 0,
+          "attributes": {
+            "gateway_id": "",
+            "id": "rtbassoc-02cf6114e79cf59dd",
+            "route_table_id": "rtb-01632835050044003",
+            "subnet_id": "subnet-09a77f107c5212d4d",
+            "timeouts": null
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjozMDAwMDAwMDAwMDAsImRlbGV0ZSI6MzAwMDAwMDAwMDAwLCJ1cGRhdGUiOjEyMDAwMDAwMDAwMH19",
+          "dependencies": [
+            "module.iam.aws_iam_instance_profile.ec2_instance_profile",
+            "module.iam.aws_iam_role.ecs_execution_role",
+            "module.iam.aws_iam_role.ecs_task_execution_role",
+            "module.iam.aws_iam_role.ecs_task_role",
+            "module.iam.aws_iam_role.s3_logging_role",
+            "module.iam.aws_iam_role.ssm_role",
+            "module.iam.aws_iam_role_policy_attachment.ecs_execution_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ecs_task_execution_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ecs_task_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.s3_logging_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ssm_role_policy_attachment",
+            "module.iam.data.aws_iam_policy_document.ssm_role_policy",
+            "module.networking.aws_eip.nat_eip",
+            "module.networking.aws_nat_gateway.nat_gateway",
+            "module.networking.aws_route_table.db_route_table",
+            "module.networking.aws_subnet.db_subnet",
+            "module.networking.aws_subnet.web_subnet",
+            "module.networking.aws_vpc.main_vpc",
+            "module.networking.data.aws_availability_zones.available",
+            "module.storage.aws_s3_bucket.log_bucket",
+            "module.storage.aws_s3_bucket_logging.bucket_logging",
+            "module.storage.aws_s3_bucket_public_access_block.Logging_bucket_block_public_access",
+            "module.storage.aws_s3_bucket_server_side_encryption_configuration.bucket_encryption",
+            "module.storage.aws_s3_bucket_versioning.Logging_bucket_versioning"
+          ],
+          "create_before_destroy": true
+        },
+        {
+          "index_key": 1,
+          "schema_version": 0,
+          "attributes": {
+            "gateway_id": "",
+            "id": "rtbassoc-0fc93459782cb62b3",
+            "route_table_id": "rtb-01632835050044003",
+            "subnet_id": "subnet-047dbc0c45ffad4a8",
+            "timeouts": null
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjozMDAwMDAwMDAwMDAsImRlbGV0ZSI6MzAwMDAwMDAwMDAwLCJ1cGRhdGUiOjEyMDAwMDAwMDAwMH19",
+          "dependencies": [
+            "module.iam.aws_iam_instance_profile.ec2_instance_profile",
+            "module.iam.aws_iam_role.ecs_execution_role",
+            "module.iam.aws_iam_role.ecs_task_execution_role",
+            "module.iam.aws_iam_role.ecs_task_role",
+            "module.iam.aws_iam_role.s3_logging_role",
+            "module.iam.aws_iam_role.ssm_role",
+            "module.iam.aws_iam_role_policy_attachment.ecs_execution_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ecs_task_execution_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ecs_task_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.s3_logging_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ssm_role_policy_attachment",
+            "module.iam.data.aws_iam_policy_document.ssm_role_policy",
+            "module.networking.aws_eip.nat_eip",
+            "module.networking.aws_nat_gateway.nat_gateway",
+            "module.networking.aws_route_table.db_route_table",
+            "module.networking.aws_subnet.db_subnet",
+            "module.networking.aws_subnet.web_subnet",
+            "module.networking.aws_vpc.main_vpc",
+            "module.networking.data.aws_availability_zones.available",
+            "module.storage.aws_s3_bucket.log_bucket",
+            "module.storage.aws_s3_bucket_logging.bucket_logging",
+            "module.storage.aws_s3_bucket_public_access_block.Logging_bucket_block_public_access",
+            "module.storage.aws_s3_bucket_server_side_encryption_configuration.bucket_encryption",
+            "module.storage.aws_s3_bucket_versioning.Logging_bucket_versioning"
+          ],
+          "create_before_destroy": true
+        }
+      ]
+    },
+    {
+      "module": "module.networking",
+      "mode": "managed",
+      "type": "aws_route_table_association",
+      "name": "web_subnet_assoc",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "index_key": 0,
+          "schema_version": 0,
+          "attributes": {
+            "gateway_id": "",
+            "id": "rtbassoc-0c99de8d750edd8bc",
+            "route_table_id": "rtb-0be02bd5dda555421",
+            "subnet_id": "subnet-01582d36436fd3242",
+            "timeouts": null
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjozMDAwMDAwMDAwMDAsImRlbGV0ZSI6MzAwMDAwMDAwMDAwLCJ1cGRhdGUiOjEyMDAwMDAwMDAwMH19",
+          "dependencies": [
+            "module.iam.aws_iam_instance_profile.ec2_instance_profile",
+            "module.iam.aws_iam_role.ecs_execution_role",
+            "module.iam.aws_iam_role.ecs_task_execution_role",
+            "module.iam.aws_iam_role.ecs_task_role",
+            "module.iam.aws_iam_role.s3_logging_role",
+            "module.iam.aws_iam_role.ssm_role",
+            "module.iam.aws_iam_role_policy_attachment.ecs_execution_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ecs_task_execution_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ecs_task_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.s3_logging_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ssm_role_policy_attachment",
+            "module.iam.data.aws_iam_policy_document.ssm_role_policy",
+            "module.networking.aws_internet_gateway.main_igw",
+            "module.networking.aws_route_table.public_route_table",
+            "module.networking.aws_subnet.web_subnet",
+            "module.networking.aws_vpc.main_vpc",
+            "module.networking.data.aws_availability_zones.available",
+            "module.storage.aws_s3_bucket.log_bucket",
+            "module.storage.aws_s3_bucket_logging.bucket_logging",
+            "module.storage.aws_s3_bucket_public_access_block.Logging_bucket_block_public_access",
+            "module.storage.aws_s3_bucket_server_side_encryption_configuration.bucket_encryption",
+            "module.storage.aws_s3_bucket_versioning.Logging_bucket_versioning"
+          ],
+          "create_before_destroy": true
+        },
+        {
+          "index_key": 1,
+          "schema_version": 0,
+          "attributes": {
+            "gateway_id": "",
+            "id": "rtbassoc-08209181307396864",
+            "route_table_id": "rtb-0be02bd5dda555421",
+            "subnet_id": "subnet-03550821743ecc778",
+            "timeouts": null
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjozMDAwMDAwMDAwMDAsImRlbGV0ZSI6MzAwMDAwMDAwMDAwLCJ1cGRhdGUiOjEyMDAwMDAwMDAwMH19",
+          "dependencies": [
+            "module.iam.aws_iam_instance_profile.ec2_instance_profile",
+            "module.iam.aws_iam_role.ecs_execution_role",
+            "module.iam.aws_iam_role.ecs_task_execution_role",
+            "module.iam.aws_iam_role.ecs_task_role",
+            "module.iam.aws_iam_role.s3_logging_role",
+            "module.iam.aws_iam_role.ssm_role",
+            "module.iam.aws_iam_role_policy_attachment.ecs_execution_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ecs_task_execution_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ecs_task_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.s3_logging_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ssm_role_policy_attachment",
+            "module.iam.data.aws_iam_policy_document.ssm_role_policy",
+            "module.networking.aws_internet_gateway.main_igw",
+            "module.networking.aws_route_table.public_route_table",
+            "module.networking.aws_subnet.web_subnet",
+            "module.networking.aws_vpc.main_vpc",
+            "module.networking.data.aws_availability_zones.available",
+            "module.storage.aws_s3_bucket.log_bucket",
+            "module.storage.aws_s3_bucket_logging.bucket_logging",
+            "module.storage.aws_s3_bucket_public_access_block.Logging_bucket_block_public_access",
+            "module.storage.aws_s3_bucket_server_side_encryption_configuration.bucket_encryption",
+            "module.storage.aws_s3_bucket_versioning.Logging_bucket_versioning"
+          ],
+          "create_before_destroy": true
+        }
+      ]
+    },
+    {
+      "module": "module.networking",
+      "mode": "managed",
+      "type": "aws_ssm_parameter",
+      "name": "app_subnet_id",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "allowed_pattern": "",
+            "arn": "arn:aws:ssm:us-east-1:654654335668:parameter/dev/us-east-1/app_subnet_id",
+            "data_type": "text",
+            "description": "The ID of the App Subnet",
+            "has_value_wo": null,
+            "id": "/dev/us-east-1/app_subnet_id",
+            "insecure_value": null,
+            "key_id": "alias/aws/ssm",
+            "name": "/dev/us-east-1/app_subnet_id",
+            "overwrite": null,
+            "tags": null,
+            "tags_all": {},
+            "tier": "Standard",
+            "type": "SecureString",
+            "value": "subnet-0344c23dce6c23338",
+            "value_wo": null,
+            "value_wo_version": null,
+            "version": 1
+          },
+          "sensitive_attributes": [
+            [
+              {
+                "type": "get_attr",
+                "value": "value_wo"
+              }
+            ],
+            [
+              {
+                "type": "get_attr",
+                "value": "value"
+              }
+            ]
+          ],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.iam.aws_iam_instance_profile.ec2_instance_profile",
+            "module.iam.aws_iam_role.ecs_execution_role",
+            "module.iam.aws_iam_role.ecs_task_execution_role",
+            "module.iam.aws_iam_role.ecs_task_role",
+            "module.iam.aws_iam_role.s3_logging_role",
+            "module.iam.aws_iam_role.ssm_role",
+            "module.iam.aws_iam_role_policy_attachment.ecs_execution_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ecs_task_execution_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ecs_task_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.s3_logging_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ssm_role_policy_attachment",
+            "module.iam.data.aws_iam_policy_document.ssm_role_policy",
+            "module.networking.aws_subnet.app_subnet",
+            "module.networking.aws_vpc.main_vpc",
+            "module.networking.data.aws_availability_zones.available",
+            "module.storage.aws_s3_bucket.log_bucket",
+            "module.storage.aws_s3_bucket_logging.bucket_logging",
+            "module.storage.aws_s3_bucket_public_access_block.Logging_bucket_block_public_access",
+            "module.storage.aws_s3_bucket_server_side_encryption_configuration.bucket_encryption",
+            "module.storage.aws_s3_bucket_versioning.Logging_bucket_versioning"
+          ],
+          "create_before_destroy": true
+        }
+      ]
+    },
+    {
+      "module": "module.networking",
+      "mode": "managed",
+      "type": "aws_ssm_parameter",
+      "name": "db_subnet_id",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "allowed_pattern": "",
+            "arn": "arn:aws:ssm:us-east-1:654654335668:parameter/dev/us-east-1/db_subnet_id",
+            "data_type": "text",
+            "description": "The ID of the Database Subnet",
+            "has_value_wo": null,
+            "id": "/dev/us-east-1/db_subnet_id",
+            "insecure_value": null,
+            "key_id": "alias/aws/ssm",
+            "name": "/dev/us-east-1/db_subnet_id",
+            "overwrite": null,
+            "tags": null,
+            "tags_all": {},
+            "tier": "Standard",
+            "type": "SecureString",
+            "value": "subnet-09a77f107c5212d4d",
+            "value_wo": null,
+            "value_wo_version": null,
+            "version": 1
+          },
+          "sensitive_attributes": [
+            [
+              {
+                "type": "get_attr",
+                "value": "value_wo"
+              }
+            ],
+            [
+              {
+                "type": "get_attr",
+                "value": "value"
+              }
+            ]
+          ],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.iam.aws_iam_instance_profile.ec2_instance_profile",
+            "module.iam.aws_iam_role.ecs_execution_role",
+            "module.iam.aws_iam_role.ecs_task_execution_role",
+            "module.iam.aws_iam_role.ecs_task_role",
+            "module.iam.aws_iam_role.s3_logging_role",
+            "module.iam.aws_iam_role.ssm_role",
+            "module.iam.aws_iam_role_policy_attachment.ecs_execution_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ecs_task_execution_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ecs_task_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.s3_logging_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ssm_role_policy_attachment",
+            "module.iam.data.aws_iam_policy_document.ssm_role_policy",
+            "module.networking.aws_subnet.db_subnet",
+            "module.networking.aws_vpc.main_vpc",
+            "module.networking.data.aws_availability_zones.available",
+            "module.storage.aws_s3_bucket.log_bucket",
+            "module.storage.aws_s3_bucket_logging.bucket_logging",
+            "module.storage.aws_s3_bucket_public_access_block.Logging_bucket_block_public_access",
+            "module.storage.aws_s3_bucket_server_side_encryption_configuration.bucket_encryption",
+            "module.storage.aws_s3_bucket_versioning.Logging_bucket_versioning"
+          ],
+          "create_before_destroy": true
+        }
+      ]
+    },
+    {
+      "module": "module.networking",
+      "mode": "managed",
+      "type": "aws_ssm_parameter",
+      "name": "igw_id",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "allowed_pattern": "",
+            "arn": "arn:aws:ssm:us-east-1:654654335668:parameter/dev/us-east-1/igw_id",
+            "data_type": "text",
+            "description": "The ID of the Internet Gateway",
+            "has_value_wo": null,
+            "id": "/dev/us-east-1/igw_id",
+            "insecure_value": null,
+            "key_id": "alias/aws/ssm",
+            "name": "/dev/us-east-1/igw_id",
+            "overwrite": null,
+            "tags": null,
+            "tags_all": {},
+            "tier": "Standard",
+            "type": "SecureString",
+            "value": "igw-07d388cff637b0709",
+            "value_wo": null,
+            "value_wo_version": null,
+            "version": 1
+          },
+          "sensitive_attributes": [
+            [
+              {
+                "type": "get_attr",
+                "value": "value_wo"
+              }
+            ],
+            [
+              {
+                "type": "get_attr",
+                "value": "value"
+              }
+            ]
+          ],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.iam.aws_iam_instance_profile.ec2_instance_profile",
+            "module.iam.aws_iam_role.ecs_execution_role",
+            "module.iam.aws_iam_role.ecs_task_execution_role",
+            "module.iam.aws_iam_role.ecs_task_role",
+            "module.iam.aws_iam_role.s3_logging_role",
+            "module.iam.aws_iam_role.ssm_role",
+            "module.iam.aws_iam_role_policy_attachment.ecs_execution_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ecs_task_execution_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ecs_task_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.s3_logging_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ssm_role_policy_attachment",
+            "module.iam.data.aws_iam_policy_document.ssm_role_policy",
+            "module.networking.aws_internet_gateway.main_igw",
+            "module.networking.aws_vpc.main_vpc",
+            "module.storage.aws_s3_bucket.log_bucket",
+            "module.storage.aws_s3_bucket_logging.bucket_logging",
+            "module.storage.aws_s3_bucket_public_access_block.Logging_bucket_block_public_access",
+            "module.storage.aws_s3_bucket_server_side_encryption_configuration.bucket_encryption",
+            "module.storage.aws_s3_bucket_versioning.Logging_bucket_versioning"
+          ],
+          "create_before_destroy": true
+        }
+      ]
+    },
+    {
+      "module": "module.networking",
+      "mode": "managed",
+      "type": "aws_ssm_parameter",
+      "name": "jumpbox_subnet",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "allowed_pattern": "",
+            "arn": "arn:aws:ssm:us-east-1:654654335668:parameter/dev/us-east-1/jumpbox_subnet",
+            "data_type": "text",
+            "description": "The ID of the JumpBox Subnet",
+            "has_value_wo": null,
+            "id": "/dev/us-east-1/jumpbox_subnet",
+            "insecure_value": null,
+            "key_id": "alias/aws/ssm",
+            "name": "/dev/us-east-1/jumpbox_subnet",
+            "overwrite": null,
+            "tags": null,
+            "tags_all": {},
+            "tier": "Standard",
+            "type": "SecureString",
+            "value": "subnet-01582d36436fd3242",
+            "value_wo": null,
+            "value_wo_version": null,
+            "version": 1
+          },
+          "sensitive_attributes": [
+            [
+              {
+                "type": "get_attr",
+                "value": "value"
+              }
+            ],
+            [
+              {
+                "type": "get_attr",
+                "value": "value_wo"
+              }
+            ]
+          ],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.iam.aws_iam_instance_profile.ec2_instance_profile",
+            "module.iam.aws_iam_role.ecs_execution_role",
+            "module.iam.aws_iam_role.ecs_task_execution_role",
+            "module.iam.aws_iam_role.ecs_task_role",
+            "module.iam.aws_iam_role.s3_logging_role",
+            "module.iam.aws_iam_role.ssm_role",
+            "module.iam.aws_iam_role_policy_attachment.ecs_execution_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ecs_task_execution_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ecs_task_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.s3_logging_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ssm_role_policy_attachment",
+            "module.iam.data.aws_iam_policy_document.ssm_role_policy",
+            "module.networking.aws_subnet.web_subnet",
+            "module.networking.aws_vpc.main_vpc",
+            "module.networking.data.aws_availability_zones.available",
+            "module.storage.aws_s3_bucket.log_bucket",
+            "module.storage.aws_s3_bucket_logging.bucket_logging",
+            "module.storage.aws_s3_bucket_public_access_block.Logging_bucket_block_public_access",
+            "module.storage.aws_s3_bucket_server_side_encryption_configuration.bucket_encryption",
+            "module.storage.aws_s3_bucket_versioning.Logging_bucket_versioning"
+          ],
+          "create_before_destroy": true
+        }
+      ]
+    },
+    {
+      "module": "module.networking",
+      "mode": "managed",
+      "type": "aws_ssm_parameter",
+      "name": "vpc_id",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "allowed_pattern": "",
+            "arn": "arn:aws:ssm:us-east-1:654654335668:parameter/dev/us-east-1/vpc_id",
+            "data_type": "text",
+            "description": "The ID of the VPC",
+            "has_value_wo": null,
+            "id": "/dev/us-east-1/vpc_id",
+            "insecure_value": null,
+            "key_id": "alias/aws/ssm",
+            "name": "/dev/us-east-1/vpc_id",
+            "overwrite": null,
+            "tags": null,
+            "tags_all": {},
+            "tier": "Standard",
+            "type": "SecureString",
+            "value": "vpc-02aef8e1ba14b3bca",
+            "value_wo": null,
+            "value_wo_version": null,
+            "version": 1
+          },
+          "sensitive_attributes": [
+            [
+              {
+                "type": "get_attr",
+                "value": "value_wo"
+              }
+            ],
+            [
+              {
+                "type": "get_attr",
+                "value": "value"
+              }
+            ]
+          ],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.iam.aws_iam_instance_profile.ec2_instance_profile",
+            "module.iam.aws_iam_role.ecs_execution_role",
+            "module.iam.aws_iam_role.ecs_task_execution_role",
+            "module.iam.aws_iam_role.ecs_task_role",
+            "module.iam.aws_iam_role.s3_logging_role",
+            "module.iam.aws_iam_role.ssm_role",
+            "module.iam.aws_iam_role_policy_attachment.ecs_execution_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ecs_task_execution_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ecs_task_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.s3_logging_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ssm_role_policy_attachment",
+            "module.iam.data.aws_iam_policy_document.ssm_role_policy",
+            "module.networking.aws_vpc.main_vpc",
+            "module.storage.aws_s3_bucket.log_bucket",
+            "module.storage.aws_s3_bucket_logging.bucket_logging",
+            "module.storage.aws_s3_bucket_public_access_block.Logging_bucket_block_public_access",
+            "module.storage.aws_s3_bucket_server_side_encryption_configuration.bucket_encryption",
+            "module.storage.aws_s3_bucket_versioning.Logging_bucket_versioning"
+          ],
+          "create_before_destroy": true
+        }
+      ]
+    },
+    {
+      "module": "module.networking",
+      "mode": "managed",
+      "type": "aws_ssm_parameter",
+      "name": "web_subnet_id",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "allowed_pattern": "",
+            "arn": "arn:aws:ssm:us-east-1:654654335668:parameter/dev/us-east-1/web_subnet_id",
+            "data_type": "text",
+            "description": "The ID of the Web Subnet",
+            "has_value_wo": null,
+            "id": "/dev/us-east-1/web_subnet_id",
+            "insecure_value": null,
+            "key_id": "alias/aws/ssm",
+            "name": "/dev/us-east-1/web_subnet_id",
+            "overwrite": null,
+            "tags": null,
+            "tags_all": {},
+            "tier": "Standard",
+            "type": "SecureString",
+            "value": "subnet-01582d36436fd3242",
+            "value_wo": null,
+            "value_wo_version": null,
+            "version": 1
+          },
+          "sensitive_attributes": [
+            [
+              {
+                "type": "get_attr",
+                "value": "value"
+              }
+            ],
+            [
+              {
+                "type": "get_attr",
+                "value": "value_wo"
+              }
+            ]
+          ],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.iam.aws_iam_instance_profile.ec2_instance_profile",
+            "module.iam.aws_iam_role.ecs_execution_role",
+            "module.iam.aws_iam_role.ecs_task_execution_role",
+            "module.iam.aws_iam_role.ecs_task_role",
+            "module.iam.aws_iam_role.s3_logging_role",
+            "module.iam.aws_iam_role.ssm_role",
+            "module.iam.aws_iam_role_policy_attachment.ecs_execution_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ecs_task_execution_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ecs_task_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.s3_logging_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ssm_role_policy_attachment",
+            "module.iam.data.aws_iam_policy_document.ssm_role_policy",
+            "module.networking.aws_subnet.web_subnet",
+            "module.networking.aws_vpc.main_vpc",
+            "module.networking.data.aws_availability_zones.available",
+            "module.storage.aws_s3_bucket.log_bucket",
+            "module.storage.aws_s3_bucket_logging.bucket_logging",
+            "module.storage.aws_s3_bucket_public_access_block.Logging_bucket_block_public_access",
+            "module.storage.aws_s3_bucket_server_side_encryption_configuration.bucket_encryption",
+            "module.storage.aws_s3_bucket_versioning.Logging_bucket_versioning"
+          ],
+          "create_before_destroy": true
+        }
+      ]
+    },
+    {
+      "module": "module.networking",
+      "mode": "managed",
+      "type": "aws_subnet",
+      "name": "app_subnet",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "index_key": 0,
+          "schema_version": 1,
+          "attributes": {
+            "arn": "arn:aws:ec2:us-east-1:654654335668:subnet/subnet-0344c23dce6c23338",
+            "assign_ipv6_address_on_creation": false,
+            "availability_zone": "us-east-1a",
+            "availability_zone_id": "use1-az1",
+            "cidr_block": "10.0.2.0/24",
+            "customer_owned_ipv4_pool": "",
+            "enable_dns64": false,
+            "enable_lni_at_device_index": 0,
+            "enable_resource_name_dns_a_record_on_launch": false,
+            "enable_resource_name_dns_aaaa_record_on_launch": false,
+            "id": "subnet-0344c23dce6c23338",
+            "ipv6_cidr_block": "",
+            "ipv6_cidr_block_association_id": "",
+            "ipv6_native": false,
+            "map_customer_owned_ip_on_launch": false,
+            "map_public_ip_on_launch": false,
+            "outpost_arn": "",
+            "owner_id": "654654335668",
+            "private_dns_hostname_type_on_launch": "ip-name",
+            "tags": {
+              "AName": "blakkbrother-dev-us-east-1-app-subnet-us-east-1a",
+              "Environment": "dev",
+              "Name": "blakkbrother-dev-us-east-1-app-subnet-1",
+              "Owner": "blakkbrother",
+              "Region": "us-east-1",
+              "Type": "Private"
+            },
+            "tags_all": {
+              "AName": "blakkbrother-dev-us-east-1-app-subnet-us-east-1a",
+              "Environment": "dev",
+              "Name": "blakkbrother-dev-us-east-1-app-subnet-1",
+              "Owner": "blakkbrother",
+              "Region": "us-east-1",
+              "Type": "Private"
+            },
+            "timeouts": null,
+            "vpc_id": "vpc-02aef8e1ba14b3bca"
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjo2MDAwMDAwMDAwMDAsImRlbGV0ZSI6MTIwMDAwMDAwMDAwMH0sInNjaGVtYV92ZXJzaW9uIjoiMSJ9",
+          "dependencies": [
+            "module.iam.aws_iam_instance_profile.ec2_instance_profile",
+            "module.iam.aws_iam_role.ecs_execution_role",
+            "module.iam.aws_iam_role.ecs_task_execution_role",
+            "module.iam.aws_iam_role.ecs_task_role",
+            "module.iam.aws_iam_role.s3_logging_role",
+            "module.iam.aws_iam_role.ssm_role",
+            "module.iam.aws_iam_role_policy_attachment.ecs_execution_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ecs_task_execution_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ecs_task_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.s3_logging_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ssm_role_policy_attachment",
+            "module.iam.data.aws_iam_policy_document.ssm_role_policy",
+            "module.networking.aws_vpc.main_vpc",
+            "module.networking.data.aws_availability_zones.available",
+            "module.storage.aws_s3_bucket.log_bucket",
+            "module.storage.aws_s3_bucket_logging.bucket_logging",
+            "module.storage.aws_s3_bucket_public_access_block.Logging_bucket_block_public_access",
+            "module.storage.aws_s3_bucket_server_side_encryption_configuration.bucket_encryption",
+            "module.storage.aws_s3_bucket_versioning.Logging_bucket_versioning"
+          ],
+          "create_before_destroy": true
+        },
+        {
+          "index_key": 1,
+          "schema_version": 1,
+          "attributes": {
+            "arn": "arn:aws:ec2:us-east-1:654654335668:subnet/subnet-066957bb66e3b715f",
+            "assign_ipv6_address_on_creation": false,
+            "availability_zone": "us-east-1b",
+            "availability_zone_id": "use1-az2",
+            "cidr_block": "10.0.3.0/24",
+            "customer_owned_ipv4_pool": "",
+            "enable_dns64": false,
+            "enable_lni_at_device_index": 0,
+            "enable_resource_name_dns_a_record_on_launch": false,
+            "enable_resource_name_dns_aaaa_record_on_launch": false,
+            "id": "subnet-066957bb66e3b715f",
+            "ipv6_cidr_block": "",
+            "ipv6_cidr_block_association_id": "",
+            "ipv6_native": false,
+            "map_customer_owned_ip_on_launch": false,
+            "map_public_ip_on_launch": false,
+            "outpost_arn": "",
+            "owner_id": "654654335668",
+            "private_dns_hostname_type_on_launch": "ip-name",
+            "tags": {
+              "AName": "blakkbrother-dev-us-east-1-app-subnet-us-east-1b",
+              "Environment": "dev",
+              "Name": "blakkbrother-dev-us-east-1-app-subnet-2",
+              "Owner": "blakkbrother",
+              "Region": "us-east-1",
+              "Type": "Private"
+            },
+            "tags_all": {
+              "AName": "blakkbrother-dev-us-east-1-app-subnet-us-east-1b",
+              "Environment": "dev",
+              "Name": "blakkbrother-dev-us-east-1-app-subnet-2",
+              "Owner": "blakkbrother",
+              "Region": "us-east-1",
+              "Type": "Private"
+            },
+            "timeouts": null,
+            "vpc_id": "vpc-02aef8e1ba14b3bca"
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjo2MDAwMDAwMDAwMDAsImRlbGV0ZSI6MTIwMDAwMDAwMDAwMH0sInNjaGVtYV92ZXJzaW9uIjoiMSJ9",
+          "dependencies": [
+            "module.iam.aws_iam_instance_profile.ec2_instance_profile",
+            "module.iam.aws_iam_role.ecs_execution_role",
+            "module.iam.aws_iam_role.ecs_task_execution_role",
+            "module.iam.aws_iam_role.ecs_task_role",
+            "module.iam.aws_iam_role.s3_logging_role",
+            "module.iam.aws_iam_role.ssm_role",
+            "module.iam.aws_iam_role_policy_attachment.ecs_execution_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ecs_task_execution_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ecs_task_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.s3_logging_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ssm_role_policy_attachment",
+            "module.iam.data.aws_iam_policy_document.ssm_role_policy",
+            "module.networking.aws_vpc.main_vpc",
+            "module.networking.data.aws_availability_zones.available",
+            "module.storage.aws_s3_bucket.log_bucket",
+            "module.storage.aws_s3_bucket_logging.bucket_logging",
+            "module.storage.aws_s3_bucket_public_access_block.Logging_bucket_block_public_access",
+            "module.storage.aws_s3_bucket_server_side_encryption_configuration.bucket_encryption",
+            "module.storage.aws_s3_bucket_versioning.Logging_bucket_versioning"
+          ],
+          "create_before_destroy": true
+        }
+      ]
+    },
+    {
+      "module": "module.networking",
+      "mode": "managed",
+      "type": "aws_subnet",
+      "name": "db_subnet",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "index_key": 0,
+          "schema_version": 1,
+          "attributes": {
+            "arn": "arn:aws:ec2:us-east-1:654654335668:subnet/subnet-09a77f107c5212d4d",
+            "assign_ipv6_address_on_creation": false,
+            "availability_zone": "us-east-1a",
+            "availability_zone_id": "use1-az1",
+            "cidr_block": "10.0.4.0/24",
+            "customer_owned_ipv4_pool": "",
+            "enable_dns64": false,
+            "enable_lni_at_device_index": 0,
+            "enable_resource_name_dns_a_record_on_launch": false,
+            "enable_resource_name_dns_aaaa_record_on_launch": false,
+            "id": "subnet-09a77f107c5212d4d",
+            "ipv6_cidr_block": "",
+            "ipv6_cidr_block_association_id": "",
+            "ipv6_native": false,
+            "map_customer_owned_ip_on_launch": false,
+            "map_public_ip_on_launch": false,
+            "outpost_arn": "",
+            "owner_id": "654654335668",
+            "private_dns_hostname_type_on_launch": "ip-name",
+            "tags": {
+              "AName": "blakkbrother-dev-us-east-1-db-subnet-us-east-1a",
+              "Environment": "dev",
+              "Name": "blakkbrother-dev-us-east-1-db-subnet-1",
+              "Owner": "blakkbrother",
+              "Region": "us-east-1",
+              "Type": "Private"
+            },
+            "tags_all": {
+              "AName": "blakkbrother-dev-us-east-1-db-subnet-us-east-1a",
+              "Environment": "dev",
+              "Name": "blakkbrother-dev-us-east-1-db-subnet-1",
+              "Owner": "blakkbrother",
+              "Region": "us-east-1",
+              "Type": "Private"
+            },
+            "timeouts": null,
+            "vpc_id": "vpc-02aef8e1ba14b3bca"
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjo2MDAwMDAwMDAwMDAsImRlbGV0ZSI6MTIwMDAwMDAwMDAwMH0sInNjaGVtYV92ZXJzaW9uIjoiMSJ9",
+          "dependencies": [
+            "module.iam.aws_iam_instance_profile.ec2_instance_profile",
+            "module.iam.aws_iam_role.ecs_execution_role",
+            "module.iam.aws_iam_role.ecs_task_execution_role",
+            "module.iam.aws_iam_role.ecs_task_role",
+            "module.iam.aws_iam_role.s3_logging_role",
+            "module.iam.aws_iam_role.ssm_role",
+            "module.iam.aws_iam_role_policy_attachment.ecs_execution_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ecs_task_execution_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ecs_task_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.s3_logging_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ssm_role_policy_attachment",
+            "module.iam.data.aws_iam_policy_document.ssm_role_policy",
+            "module.networking.aws_vpc.main_vpc",
+            "module.networking.data.aws_availability_zones.available",
+            "module.storage.aws_s3_bucket.log_bucket",
+            "module.storage.aws_s3_bucket_logging.bucket_logging",
+            "module.storage.aws_s3_bucket_public_access_block.Logging_bucket_block_public_access",
+            "module.storage.aws_s3_bucket_server_side_encryption_configuration.bucket_encryption",
+            "module.storage.aws_s3_bucket_versioning.Logging_bucket_versioning"
+          ],
+          "create_before_destroy": true
+        },
+        {
+          "index_key": 1,
+          "schema_version": 1,
+          "attributes": {
+            "arn": "arn:aws:ec2:us-east-1:654654335668:subnet/subnet-047dbc0c45ffad4a8",
+            "assign_ipv6_address_on_creation": false,
+            "availability_zone": "us-east-1b",
+            "availability_zone_id": "use1-az2",
+            "cidr_block": "10.0.5.0/24",
+            "customer_owned_ipv4_pool": "",
+            "enable_dns64": false,
+            "enable_lni_at_device_index": 0,
+            "enable_resource_name_dns_a_record_on_launch": false,
+            "enable_resource_name_dns_aaaa_record_on_launch": false,
+            "id": "subnet-047dbc0c45ffad4a8",
+            "ipv6_cidr_block": "",
+            "ipv6_cidr_block_association_id": "",
+            "ipv6_native": false,
+            "map_customer_owned_ip_on_launch": false,
+            "map_public_ip_on_launch": false,
+            "outpost_arn": "",
+            "owner_id": "654654335668",
+            "private_dns_hostname_type_on_launch": "ip-name",
+            "tags": {
+              "AName": "blakkbrother-dev-us-east-1-db-subnet-us-east-1b",
+              "Environment": "dev",
+              "Name": "blakkbrother-dev-us-east-1-db-subnet-2",
+              "Owner": "blakkbrother",
+              "Region": "us-east-1",
+              "Type": "Private"
+            },
+            "tags_all": {
+              "AName": "blakkbrother-dev-us-east-1-db-subnet-us-east-1b",
+              "Environment": "dev",
+              "Name": "blakkbrother-dev-us-east-1-db-subnet-2",
+              "Owner": "blakkbrother",
+              "Region": "us-east-1",
+              "Type": "Private"
+            },
+            "timeouts": null,
+            "vpc_id": "vpc-02aef8e1ba14b3bca"
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjo2MDAwMDAwMDAwMDAsImRlbGV0ZSI6MTIwMDAwMDAwMDAwMH0sInNjaGVtYV92ZXJzaW9uIjoiMSJ9",
+          "dependencies": [
+            "module.iam.aws_iam_instance_profile.ec2_instance_profile",
+            "module.iam.aws_iam_role.ecs_execution_role",
+            "module.iam.aws_iam_role.ecs_task_execution_role",
+            "module.iam.aws_iam_role.ecs_task_role",
+            "module.iam.aws_iam_role.s3_logging_role",
+            "module.iam.aws_iam_role.ssm_role",
+            "module.iam.aws_iam_role_policy_attachment.ecs_execution_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ecs_task_execution_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ecs_task_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.s3_logging_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ssm_role_policy_attachment",
+            "module.iam.data.aws_iam_policy_document.ssm_role_policy",
+            "module.networking.aws_vpc.main_vpc",
+            "module.networking.data.aws_availability_zones.available",
+            "module.storage.aws_s3_bucket.log_bucket",
+            "module.storage.aws_s3_bucket_logging.bucket_logging",
+            "module.storage.aws_s3_bucket_public_access_block.Logging_bucket_block_public_access",
+            "module.storage.aws_s3_bucket_server_side_encryption_configuration.bucket_encryption",
+            "module.storage.aws_s3_bucket_versioning.Logging_bucket_versioning"
+          ],
+          "create_before_destroy": true
+        }
+      ]
+    },
+    {
+      "module": "module.networking",
+      "mode": "managed",
+      "type": "aws_subnet",
+      "name": "web_subnet",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "index_key": 0,
+          "schema_version": 1,
+          "attributes": {
+            "arn": "arn:aws:ec2:us-east-1:654654335668:subnet/subnet-01582d36436fd3242",
+            "assign_ipv6_address_on_creation": false,
+            "availability_zone": "us-east-1a",
+            "availability_zone_id": "use1-az1",
+            "cidr_block": "10.0.0.0/24",
+            "customer_owned_ipv4_pool": "",
+            "enable_dns64": false,
+            "enable_lni_at_device_index": 0,
+            "enable_resource_name_dns_a_record_on_launch": false,
+            "enable_resource_name_dns_aaaa_record_on_launch": false,
+            "id": "subnet-01582d36436fd3242",
+            "ipv6_cidr_block": "",
+            "ipv6_cidr_block_association_id": "",
+            "ipv6_native": false,
+            "map_customer_owned_ip_on_launch": false,
+            "map_public_ip_on_launch": false,
+            "outpost_arn": "",
+            "owner_id": "654654335668",
+            "private_dns_hostname_type_on_launch": "ip-name",
+            "tags": {
+              "AName": "blakkbrother-dev-us-east-1-web-subnet-us-east-1a",
+              "Environment": "dev",
+              "Name": "blakkbrother-dev-us-east-1-web-subnet-1",
+              "Owner": "blakkbrother",
+              "Region": "us-east-1",
+              "Type": "Public"
+            },
+            "tags_all": {
+              "AName": "blakkbrother-dev-us-east-1-web-subnet-us-east-1a",
+              "Environment": "dev",
+              "Name": "blakkbrother-dev-us-east-1-web-subnet-1",
+              "Owner": "blakkbrother",
+              "Region": "us-east-1",
+              "Type": "Public"
+            },
+            "timeouts": null,
+            "vpc_id": "vpc-02aef8e1ba14b3bca"
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjo2MDAwMDAwMDAwMDAsImRlbGV0ZSI6MTIwMDAwMDAwMDAwMH0sInNjaGVtYV92ZXJzaW9uIjoiMSJ9",
+          "dependencies": [
+            "module.iam.aws_iam_instance_profile.ec2_instance_profile",
+            "module.iam.aws_iam_role.ecs_execution_role",
+            "module.iam.aws_iam_role.ecs_task_execution_role",
+            "module.iam.aws_iam_role.ecs_task_role",
+            "module.iam.aws_iam_role.s3_logging_role",
+            "module.iam.aws_iam_role.ssm_role",
+            "module.iam.aws_iam_role_policy_attachment.ecs_execution_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ecs_task_execution_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ecs_task_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.s3_logging_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ssm_role_policy_attachment",
+            "module.iam.data.aws_iam_policy_document.ssm_role_policy",
+            "module.networking.aws_vpc.main_vpc",
+            "module.networking.data.aws_availability_zones.available",
+            "module.storage.aws_s3_bucket.log_bucket",
+            "module.storage.aws_s3_bucket_logging.bucket_logging",
+            "module.storage.aws_s3_bucket_public_access_block.Logging_bucket_block_public_access",
+            "module.storage.aws_s3_bucket_server_side_encryption_configuration.bucket_encryption",
+            "module.storage.aws_s3_bucket_versioning.Logging_bucket_versioning"
+          ],
+          "create_before_destroy": true
+        },
+        {
+          "index_key": 1,
+          "schema_version": 1,
+          "attributes": {
+            "arn": "arn:aws:ec2:us-east-1:654654335668:subnet/subnet-03550821743ecc778",
+            "assign_ipv6_address_on_creation": false,
+            "availability_zone": "us-east-1b",
+            "availability_zone_id": "use1-az2",
+            "cidr_block": "10.0.1.0/24",
+            "customer_owned_ipv4_pool": "",
+            "enable_dns64": false,
+            "enable_lni_at_device_index": 0,
+            "enable_resource_name_dns_a_record_on_launch": false,
+            "enable_resource_name_dns_aaaa_record_on_launch": false,
+            "id": "subnet-03550821743ecc778",
+            "ipv6_cidr_block": "",
+            "ipv6_cidr_block_association_id": "",
+            "ipv6_native": false,
+            "map_customer_owned_ip_on_launch": false,
+            "map_public_ip_on_launch": false,
+            "outpost_arn": "",
+            "owner_id": "654654335668",
+            "private_dns_hostname_type_on_launch": "ip-name",
+            "tags": {
+              "AName": "blakkbrother-dev-us-east-1-web-subnet-us-east-1b",
+              "Environment": "dev",
+              "Name": "blakkbrother-dev-us-east-1-web-subnet-2",
+              "Owner": "blakkbrother",
+              "Region": "us-east-1",
+              "Type": "Public"
+            },
+            "tags_all": {
+              "AName": "blakkbrother-dev-us-east-1-web-subnet-us-east-1b",
+              "Environment": "dev",
+              "Name": "blakkbrother-dev-us-east-1-web-subnet-2",
+              "Owner": "blakkbrother",
+              "Region": "us-east-1",
+              "Type": "Public"
+            },
+            "timeouts": null,
+            "vpc_id": "vpc-02aef8e1ba14b3bca"
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjo2MDAwMDAwMDAwMDAsImRlbGV0ZSI6MTIwMDAwMDAwMDAwMH0sInNjaGVtYV92ZXJzaW9uIjoiMSJ9",
+          "dependencies": [
+            "module.iam.aws_iam_instance_profile.ec2_instance_profile",
+            "module.iam.aws_iam_role.ecs_execution_role",
+            "module.iam.aws_iam_role.ecs_task_execution_role",
+            "module.iam.aws_iam_role.ecs_task_role",
+            "module.iam.aws_iam_role.s3_logging_role",
+            "module.iam.aws_iam_role.ssm_role",
+            "module.iam.aws_iam_role_policy_attachment.ecs_execution_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ecs_task_execution_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ecs_task_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.s3_logging_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ssm_role_policy_attachment",
+            "module.iam.data.aws_iam_policy_document.ssm_role_policy",
+            "module.networking.aws_vpc.main_vpc",
+            "module.networking.data.aws_availability_zones.available",
+            "module.storage.aws_s3_bucket.log_bucket",
+            "module.storage.aws_s3_bucket_logging.bucket_logging",
+            "module.storage.aws_s3_bucket_public_access_block.Logging_bucket_block_public_access",
+            "module.storage.aws_s3_bucket_server_side_encryption_configuration.bucket_encryption",
+            "module.storage.aws_s3_bucket_versioning.Logging_bucket_versioning"
+          ],
+          "create_before_destroy": true
+        }
+      ]
+    },
+    {
+      "module": "module.networking",
+      "mode": "managed",
+      "type": "aws_vpc",
+      "name": "main_vpc",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 1,
+          "attributes": {
+            "arn": "arn:aws:ec2:us-east-1:654654335668:vpc/vpc-02aef8e1ba14b3bca",
+            "assign_generated_ipv6_cidr_block": false,
+            "cidr_block": "10.0.0.0/16",
+            "default_network_acl_id": "acl-0aff6753d74dc5b79",
+            "default_route_table_id": "rtb-0f2f48c6b2c7be116",
+            "default_security_group_id": "sg-000f67ed74539ae26",
+            "dhcp_options_id": "dopt-07af1fb3f3d85bdba",
+            "enable_dns_hostnames": true,
+            "enable_dns_support": true,
+            "enable_network_address_usage_metrics": false,
+            "id": "vpc-02aef8e1ba14b3bca",
+            "instance_tenancy": "default",
+            "ipv4_ipam_pool_id": null,
+            "ipv4_netmask_length": null,
+            "ipv6_association_id": "",
+            "ipv6_cidr_block": "",
+            "ipv6_cidr_block_network_border_group": "",
+            "ipv6_ipam_pool_id": "",
+            "ipv6_netmask_length": 0,
+            "main_route_table_id": "rtb-0f2f48c6b2c7be116",
+            "owner_id": "654654335668",
+            "tags": {
+              "Environment": "dev",
+              "Name": "blakkbrother-dev-us-east-1-vpc",
+              "Owner": "blakkbrother",
+              "Region": "us-east-1"
+            },
+            "tags_all": {
+              "Environment": "dev",
+              "Name": "blakkbrother-dev-us-east-1-vpc",
+              "Owner": "blakkbrother",
+              "Region": "us-east-1"
+            }
+          },
+          "sensitive_attributes": [],
+          "private": "eyJzY2hlbWFfdmVyc2lvbiI6IjEifQ==",
+          "dependencies": [
+            "module.iam.aws_iam_instance_profile.ec2_instance_profile",
+            "module.iam.aws_iam_role.ecs_execution_role",
+            "module.iam.aws_iam_role.ecs_task_execution_role",
+            "module.iam.aws_iam_role.ecs_task_role",
+            "module.iam.aws_iam_role.s3_logging_role",
+            "module.iam.aws_iam_role.ssm_role",
+            "module.iam.aws_iam_role_policy_attachment.ecs_execution_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ecs_task_execution_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ecs_task_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.s3_logging_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ssm_role_policy_attachment",
+            "module.iam.data.aws_iam_policy_document.ssm_role_policy",
+            "module.storage.aws_s3_bucket.log_bucket",
+            "module.storage.aws_s3_bucket_logging.bucket_logging",
+            "module.storage.aws_s3_bucket_public_access_block.Logging_bucket_block_public_access",
+            "module.storage.aws_s3_bucket_server_side_encryption_configuration.bucket_encryption",
+            "module.storage.aws_s3_bucket_versioning.Logging_bucket_versioning"
+          ],
+          "create_before_destroy": true
+        }
+      ]
+    },
+    {
+      "module": "module.security",
+      "mode": "managed",
+      "type": "aws_security_group",
+      "name": "alb_sg",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 1,
+          "attributes": {
+            "arn": "arn:aws:ec2:us-east-1:654654335668:security-group/sg-06ed4c4b0dc3c4fd6",
+            "description": "Allows HTTP and HTTPS Traffic from Internet",
+            "egress": [
+              {
+                "cidr_blocks": [
+                  "0.0.0.0/0"
+                ],
+                "description": "",
+                "from_port": 0,
+                "ipv6_cidr_blocks": [],
+                "prefix_list_ids": [],
+                "protocol": "-1",
+                "security_groups": [],
+                "self": false,
+                "to_port": 0
+              }
+            ],
+            "id": "sg-06ed4c4b0dc3c4fd6",
+            "ingress": [
+              {
+                "cidr_blocks": [
+                  "0.0.0.0/0"
+                ],
+                "description": "",
+                "from_port": 443,
+                "ipv6_cidr_blocks": [],
+                "prefix_list_ids": [],
+                "protocol": "tcp",
+                "security_groups": [],
+                "self": false,
+                "to_port": 443
+              },
+              {
+                "cidr_blocks": [
+                  "0.0.0.0/0"
+                ],
+                "description": "",
+                "from_port": 80,
+                "ipv6_cidr_blocks": [],
+                "prefix_list_ids": [],
+                "protocol": "tcp",
+                "security_groups": [],
+                "self": false,
+                "to_port": 80
+              },
+              {
+                "cidr_blocks": [],
+                "description": "",
+                "from_port": 22,
+                "ipv6_cidr_blocks": [],
+                "prefix_list_ids": [],
+                "protocol": "tcp",
+                "security_groups": [
+                  "sg-09c1d78ecf3e3b259"
+                ],
+                "self": false,
+                "to_port": 22
+              }
+            ],
+            "name": "blakkbrother-dev-us-east-1-alb-sg",
+            "name_prefix": "",
+            "owner_id": "654654335668",
+            "revoke_rules_on_delete": false,
+            "tags": {
+              "Environment": "dev",
+              "Name": "blakkbrother-dev-us-east-1-alb-sg",
+              "Owner": "blakkbrother",
+              "Region": "us-east-1"
+            },
+            "tags_all": {
+              "Environment": "dev",
+              "Name": "blakkbrother-dev-us-east-1-alb-sg",
+              "Owner": "blakkbrother",
+              "Region": "us-east-1"
+            },
+            "timeouts": null,
+            "vpc_id": "vpc-02aef8e1ba14b3bca"
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjo2MDAwMDAwMDAwMDAsImRlbGV0ZSI6OTAwMDAwMDAwMDAwfSwic2NoZW1hX3ZlcnNpb24iOiIxIn0=",
+          "dependencies": [
+            "module.iam.aws_iam_instance_profile.ec2_instance_profile",
+            "module.iam.aws_iam_role.ecs_execution_role",
+            "module.iam.aws_iam_role.ecs_task_execution_role",
+            "module.iam.aws_iam_role.ecs_task_role",
+            "module.iam.aws_iam_role.s3_logging_role",
+            "module.iam.aws_iam_role.ssm_role",
+            "module.iam.aws_iam_role_policy_attachment.ecs_execution_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ecs_task_execution_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ecs_task_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.s3_logging_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ssm_role_policy_attachment",
+            "module.iam.data.aws_iam_policy_document.ssm_role_policy",
+            "module.networking.aws_default_route_table.default_route_table",
+            "module.networking.aws_default_security_group.default_sg",
+            "module.networking.aws_eip.nat_eip",
+            "module.networking.aws_internet_gateway.main_igw",
+            "module.networking.aws_nat_gateway.nat_gateway",
+            "module.networking.aws_route_table.app_route_table",
+            "module.networking.aws_route_table.db_route_table",
+            "module.networking.aws_route_table.public_route_table",
+            "module.networking.aws_route_table_association.app_subnet_assoc",
+            "module.networking.aws_route_table_association.db_subnet_assoc",
+            "module.networking.aws_route_table_association.web_subnet_assoc",
+            "module.networking.aws_ssm_parameter.app_subnet_id",
+            "module.networking.aws_ssm_parameter.db_subnet_id",
+            "module.networking.aws_ssm_parameter.igw_id",
+            "module.networking.aws_ssm_parameter.jumpbox_subnet",
+            "module.networking.aws_ssm_parameter.vpc_id",
+            "module.networking.aws_ssm_parameter.web_subnet_id",
+            "module.networking.aws_subnet.app_subnet",
+            "module.networking.aws_subnet.db_subnet",
+            "module.networking.aws_subnet.web_subnet",
+            "module.networking.aws_vpc.main_vpc",
+            "module.networking.data.aws_availability_zones.available",
+            "module.security.aws_security_group.jump_server_sg",
+            "module.storage.aws_s3_bucket.log_bucket",
+            "module.storage.aws_s3_bucket_logging.bucket_logging",
+            "module.storage.aws_s3_bucket_public_access_block.Logging_bucket_block_public_access",
+            "module.storage.aws_s3_bucket_server_side_encryption_configuration.bucket_encryption",
+            "module.storage.aws_s3_bucket_versioning.Logging_bucket_versioning"
+          ],
+          "create_before_destroy": true
+        }
+      ]
+    },
+    {
+      "module": "module.security",
+      "mode": "managed",
+      "type": "aws_security_group",
+      "name": "ecs_sg",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 1,
+          "attributes": {
+            "arn": "arn:aws:ec2:us-east-1:654654335668:security-group/sg-0599d0e431c5ddb98",
+            "description": "Allows HTTP and HTTPS Traffic from ALB",
+            "egress": [
+              {
+                "cidr_blocks": [
+                  "0.0.0.0/0"
+                ],
+                "description": "",
+                "from_port": 0,
+                "ipv6_cidr_blocks": [],
+                "prefix_list_ids": [],
+                "protocol": "-1",
+                "security_groups": [],
+                "self": false,
+                "to_port": 0
+              }
+            ],
+            "id": "sg-0599d0e431c5ddb98",
+            "ingress": [
+              {
+                "cidr_blocks": [],
+                "description": "",
+                "from_port": 22,
+                "ipv6_cidr_blocks": [],
+                "prefix_list_ids": [],
+                "protocol": "tcp",
+                "security_groups": [
+                  "sg-09c1d78ecf3e3b259"
+                ],
+                "self": false,
+                "to_port": 22
+              },
+              {
+                "cidr_blocks": [],
+                "description": "",
+                "from_port": 80,
+                "ipv6_cidr_blocks": [],
+                "prefix_list_ids": [],
+                "protocol": "tcp",
+                "security_groups": [
+                  "sg-06ed4c4b0dc3c4fd6"
+                ],
+                "self": false,
+                "to_port": 80
+              },
+              {
+                "cidr_blocks": [],
+                "description": "Allow Traffic from ALB",
+                "from_port": 8080,
+                "ipv6_cidr_blocks": [],
+                "prefix_list_ids": [],
+                "protocol": "tcp",
+                "security_groups": [
+                  "sg-06ed4c4b0dc3c4fd6"
+                ],
+                "self": false,
+                "to_port": 8080
+              }
+            ],
+            "name": "blakkbrother-dev-us-east-1-ecs-sg",
+            "name_prefix": "",
+            "owner_id": "654654335668",
+            "revoke_rules_on_delete": false,
+            "tags": {
+              "Environment": "dev",
+              "Name": "blakkbrother-dev-us-east-1-ecs-sg",
+              "Owner": "blakkbrother",
+              "Region": "us-east-1"
+            },
+            "tags_all": {
+              "Environment": "dev",
+              "Name": "blakkbrother-dev-us-east-1-ecs-sg",
+              "Owner": "blakkbrother",
+              "Region": "us-east-1"
+            },
+            "timeouts": null,
+            "vpc_id": "vpc-02aef8e1ba14b3bca"
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjo2MDAwMDAwMDAwMDAsImRlbGV0ZSI6OTAwMDAwMDAwMDAwfSwic2NoZW1hX3ZlcnNpb24iOiIxIn0=",
+          "dependencies": [
+            "module.iam.aws_iam_instance_profile.ec2_instance_profile",
+            "module.iam.aws_iam_role.ecs_execution_role",
+            "module.iam.aws_iam_role.ecs_task_execution_role",
+            "module.iam.aws_iam_role.ecs_task_role",
+            "module.iam.aws_iam_role.s3_logging_role",
+            "module.iam.aws_iam_role.ssm_role",
+            "module.iam.aws_iam_role_policy_attachment.ecs_execution_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ecs_task_execution_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ecs_task_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.s3_logging_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ssm_role_policy_attachment",
+            "module.iam.data.aws_iam_policy_document.ssm_role_policy",
+            "module.networking.aws_default_route_table.default_route_table",
+            "module.networking.aws_default_security_group.default_sg",
+            "module.networking.aws_eip.nat_eip",
+            "module.networking.aws_internet_gateway.main_igw",
+            "module.networking.aws_nat_gateway.nat_gateway",
+            "module.networking.aws_route_table.app_route_table",
+            "module.networking.aws_route_table.db_route_table",
+            "module.networking.aws_route_table.public_route_table",
+            "module.networking.aws_route_table_association.app_subnet_assoc",
+            "module.networking.aws_route_table_association.db_subnet_assoc",
+            "module.networking.aws_route_table_association.web_subnet_assoc",
+            "module.networking.aws_ssm_parameter.app_subnet_id",
+            "module.networking.aws_ssm_parameter.db_subnet_id",
+            "module.networking.aws_ssm_parameter.igw_id",
+            "module.networking.aws_ssm_parameter.jumpbox_subnet",
+            "module.networking.aws_ssm_parameter.vpc_id",
+            "module.networking.aws_ssm_parameter.web_subnet_id",
+            "module.networking.aws_subnet.app_subnet",
+            "module.networking.aws_subnet.db_subnet",
+            "module.networking.aws_subnet.web_subnet",
+            "module.networking.aws_vpc.main_vpc",
+            "module.networking.data.aws_availability_zones.available",
+            "module.security.aws_security_group.alb_sg",
+            "module.security.aws_security_group.jump_server_sg",
+            "module.storage.aws_s3_bucket.log_bucket",
+            "module.storage.aws_s3_bucket_logging.bucket_logging",
+            "module.storage.aws_s3_bucket_public_access_block.Logging_bucket_block_public_access",
+            "module.storage.aws_s3_bucket_server_side_encryption_configuration.bucket_encryption",
+            "module.storage.aws_s3_bucket_versioning.Logging_bucket_versioning"
+          ],
+          "create_before_destroy": true
+        }
+      ]
+    },
+    {
+      "module": "module.security",
+      "mode": "managed",
+      "type": "aws_security_group",
+      "name": "jump_server_sg",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 1,
+          "attributes": {
+            "arn": "arn:aws:ec2:us-east-1:654654335668:security-group/sg-09c1d78ecf3e3b259",
+            "description": "Security Group for Jump Server",
+            "egress": [
+              {
+                "cidr_blocks": [
+                  "0.0.0.0/0"
+                ],
+                "description": "",
+                "from_port": 0,
+                "ipv6_cidr_blocks": [],
+                "prefix_list_ids": [],
+                "protocol": "-1",
+                "security_groups": [],
+                "self": false,
+                "to_port": 0
+              }
+            ],
+            "id": "sg-09c1d78ecf3e3b259",
+            "ingress": [
+              {
+                "cidr_blocks": [
+                  "10.0.0.0/16"
+                ],
+                "description": "",
+                "from_port": 22,
+                "ipv6_cidr_blocks": [],
+                "prefix_list_ids": [],
+                "protocol": "tcp",
+                "security_groups": [],
+                "self": false,
+                "to_port": 22
+              }
+            ],
+            "name": "blakkbrother-dev-us-east-1-jump-server-sg",
+            "name_prefix": "",
+            "owner_id": "654654335668",
+            "revoke_rules_on_delete": false,
+            "tags": {
+              "Environment": "dev",
+              "Name": "blakkbrother-dev-us-east-1-jump-server-sg",
+              "Owner": "blakkbrother",
+              "Region": "us-east-1"
+            },
+            "tags_all": {
+              "Environment": "dev",
+              "Name": "blakkbrother-dev-us-east-1-jump-server-sg",
+              "Owner": "blakkbrother",
+              "Region": "us-east-1"
+            },
+            "timeouts": null,
+            "vpc_id": "vpc-02aef8e1ba14b3bca"
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjo2MDAwMDAwMDAwMDAsImRlbGV0ZSI6OTAwMDAwMDAwMDAwfSwic2NoZW1hX3ZlcnNpb24iOiIxIn0=",
+          "dependencies": [
+            "module.iam.aws_iam_instance_profile.ec2_instance_profile",
+            "module.iam.aws_iam_role.ecs_execution_role",
+            "module.iam.aws_iam_role.ecs_task_execution_role",
+            "module.iam.aws_iam_role.ecs_task_role",
+            "module.iam.aws_iam_role.s3_logging_role",
+            "module.iam.aws_iam_role.ssm_role",
+            "module.iam.aws_iam_role_policy_attachment.ecs_execution_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ecs_task_execution_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ecs_task_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.s3_logging_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ssm_role_policy_attachment",
+            "module.iam.data.aws_iam_policy_document.ssm_role_policy",
+            "module.networking.aws_default_route_table.default_route_table",
+            "module.networking.aws_default_security_group.default_sg",
+            "module.networking.aws_eip.nat_eip",
+            "module.networking.aws_internet_gateway.main_igw",
+            "module.networking.aws_nat_gateway.nat_gateway",
+            "module.networking.aws_route_table.app_route_table",
+            "module.networking.aws_route_table.db_route_table",
+            "module.networking.aws_route_table.public_route_table",
+            "module.networking.aws_route_table_association.app_subnet_assoc",
+            "module.networking.aws_route_table_association.db_subnet_assoc",
+            "module.networking.aws_route_table_association.web_subnet_assoc",
+            "module.networking.aws_ssm_parameter.app_subnet_id",
+            "module.networking.aws_ssm_parameter.db_subnet_id",
+            "module.networking.aws_ssm_parameter.igw_id",
+            "module.networking.aws_ssm_parameter.jumpbox_subnet",
+            "module.networking.aws_ssm_parameter.vpc_id",
+            "module.networking.aws_ssm_parameter.web_subnet_id",
+            "module.networking.aws_subnet.app_subnet",
+            "module.networking.aws_subnet.db_subnet",
+            "module.networking.aws_subnet.web_subnet",
+            "module.networking.aws_vpc.main_vpc",
+            "module.networking.data.aws_availability_zones.available",
+            "module.storage.aws_s3_bucket.log_bucket",
+            "module.storage.aws_s3_bucket_logging.bucket_logging",
+            "module.storage.aws_s3_bucket_public_access_block.Logging_bucket_block_public_access",
+            "module.storage.aws_s3_bucket_server_side_encryption_configuration.bucket_encryption",
+            "module.storage.aws_s3_bucket_versioning.Logging_bucket_versioning"
+          ],
+          "create_before_destroy": true
+        }
+      ]
+    },
+    {
+      "module": "module.security",
+      "mode": "managed",
+      "type": "aws_security_group",
+      "name": "rds_sg",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 1,
+          "attributes": {
+            "arn": "arn:aws:ec2:us-east-1:654654335668:security-group/sg-0b98ac0c196ed9e72",
+            "description": "Allows MySQL Traffic from ECS",
+            "egress": [
+              {
+                "cidr_blocks": [
+                  "0.0.0.0/0"
+                ],
+                "description": "",
+                "from_port": 0,
+                "ipv6_cidr_blocks": [],
+                "prefix_list_ids": [],
+                "protocol": "-1",
+                "security_groups": [],
+                "self": false,
+                "to_port": 0
+              }
+            ],
+            "id": "sg-0b98ac0c196ed9e72",
+            "ingress": [
+              {
+                "cidr_blocks": [],
+                "description": "",
+                "from_port": 3306,
+                "ipv6_cidr_blocks": [],
+                "prefix_list_ids": [],
+                "protocol": "tcp",
+                "security_groups": [
+                  "sg-0599d0e431c5ddb98",
+                  "sg-09c1d78ecf3e3b259"
+                ],
+                "self": false,
+                "to_port": 3306
+              }
+            ],
+            "name": "blakkbrother-dev-us-east-1-rds-sg",
+            "name_prefix": "",
+            "owner_id": "654654335668",
+            "revoke_rules_on_delete": false,
+            "tags": {
+              "Environment": "dev",
+              "Name": "blakkbrother-dev-us-east-1-rds-sg",
+              "Owner": "blakkbrother",
+              "Region": "us-east-1"
+            },
+            "tags_all": {
+              "Environment": "dev",
+              "Name": "blakkbrother-dev-us-east-1-rds-sg",
+              "Owner": "blakkbrother",
+              "Region": "us-east-1"
+            },
+            "timeouts": null,
+            "vpc_id": "vpc-02aef8e1ba14b3bca"
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjo2MDAwMDAwMDAwMDAsImRlbGV0ZSI6OTAwMDAwMDAwMDAwfSwic2NoZW1hX3ZlcnNpb24iOiIxIn0=",
+          "dependencies": [
+            "module.iam.aws_iam_instance_profile.ec2_instance_profile",
+            "module.iam.aws_iam_role.ecs_execution_role",
+            "module.iam.aws_iam_role.ecs_task_execution_role",
+            "module.iam.aws_iam_role.ecs_task_role",
+            "module.iam.aws_iam_role.s3_logging_role",
+            "module.iam.aws_iam_role.ssm_role",
+            "module.iam.aws_iam_role_policy_attachment.ecs_execution_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ecs_task_execution_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ecs_task_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.s3_logging_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ssm_role_policy_attachment",
+            "module.iam.data.aws_iam_policy_document.ssm_role_policy",
+            "module.networking.aws_default_route_table.default_route_table",
+            "module.networking.aws_default_security_group.default_sg",
+            "module.networking.aws_eip.nat_eip",
+            "module.networking.aws_internet_gateway.main_igw",
+            "module.networking.aws_nat_gateway.nat_gateway",
+            "module.networking.aws_route_table.app_route_table",
+            "module.networking.aws_route_table.db_route_table",
+            "module.networking.aws_route_table.public_route_table",
+            "module.networking.aws_route_table_association.app_subnet_assoc",
+            "module.networking.aws_route_table_association.db_subnet_assoc",
+            "module.networking.aws_route_table_association.web_subnet_assoc",
+            "module.networking.aws_ssm_parameter.app_subnet_id",
+            "module.networking.aws_ssm_parameter.db_subnet_id",
+            "module.networking.aws_ssm_parameter.igw_id",
+            "module.networking.aws_ssm_parameter.jumpbox_subnet",
+            "module.networking.aws_ssm_parameter.vpc_id",
+            "module.networking.aws_ssm_parameter.web_subnet_id",
+            "module.networking.aws_subnet.app_subnet",
+            "module.networking.aws_subnet.db_subnet",
+            "module.networking.aws_subnet.web_subnet",
+            "module.networking.aws_vpc.main_vpc",
+            "module.networking.data.aws_availability_zones.available",
+            "module.security.aws_security_group.alb_sg",
+            "module.security.aws_security_group.ecs_sg",
+            "module.security.aws_security_group.jump_server_sg",
+            "module.storage.aws_s3_bucket.log_bucket",
+            "module.storage.aws_s3_bucket_logging.bucket_logging",
+            "module.storage.aws_s3_bucket_public_access_block.Logging_bucket_block_public_access",
+            "module.storage.aws_s3_bucket_server_side_encryption_configuration.bucket_encryption",
+            "module.storage.aws_s3_bucket_versioning.Logging_bucket_versioning"
+          ],
+          "create_before_destroy": true
+        }
+      ]
+    },
+    {
+      "module": "module.security",
+      "mode": "managed",
+      "type": "aws_ssm_parameter",
+      "name": "alb_sg_id",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "allowed_pattern": "",
+            "arn": "arn:aws:ssm:us-east-1:654654335668:parameter/dev/east/alb-sg-id",
+            "data_type": "text",
+            "description": "The ID of the ALB Security Group",
+            "has_value_wo": null,
+            "id": "/dev/east/alb-sg-id",
+            "insecure_value": null,
+            "key_id": "alias/aws/ssm",
+            "name": "/dev/east/alb-sg-id",
+            "overwrite": null,
+            "tags": null,
+            "tags_all": {},
+            "tier": "Standard",
+            "type": "SecureString",
+            "value": "sg-06ed4c4b0dc3c4fd6",
+            "value_wo": null,
+            "value_wo_version": null,
+            "version": 1
+          },
+          "sensitive_attributes": [
+            [
+              {
+                "type": "get_attr",
+                "value": "value_wo"
+              }
+            ],
+            [
+              {
+                "type": "get_attr",
+                "value": "value"
+              }
+            ]
+          ],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.iam.aws_iam_instance_profile.ec2_instance_profile",
+            "module.iam.aws_iam_role.ecs_execution_role",
+            "module.iam.aws_iam_role.ecs_task_execution_role",
+            "module.iam.aws_iam_role.ecs_task_role",
+            "module.iam.aws_iam_role.s3_logging_role",
+            "module.iam.aws_iam_role.ssm_role",
+            "module.iam.aws_iam_role_policy_attachment.ecs_execution_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ecs_task_execution_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ecs_task_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.s3_logging_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ssm_role_policy_attachment",
+            "module.iam.data.aws_iam_policy_document.ssm_role_policy",
+            "module.networking.aws_default_route_table.default_route_table",
+            "module.networking.aws_default_security_group.default_sg",
+            "module.networking.aws_eip.nat_eip",
+            "module.networking.aws_internet_gateway.main_igw",
+            "module.networking.aws_nat_gateway.nat_gateway",
+            "module.networking.aws_route_table.app_route_table",
+            "module.networking.aws_route_table.db_route_table",
+            "module.networking.aws_route_table.public_route_table",
+            "module.networking.aws_route_table_association.app_subnet_assoc",
+            "module.networking.aws_route_table_association.db_subnet_assoc",
+            "module.networking.aws_route_table_association.web_subnet_assoc",
+            "module.networking.aws_ssm_parameter.app_subnet_id",
+            "module.networking.aws_ssm_parameter.db_subnet_id",
+            "module.networking.aws_ssm_parameter.igw_id",
+            "module.networking.aws_ssm_parameter.jumpbox_subnet",
+            "module.networking.aws_ssm_parameter.vpc_id",
+            "module.networking.aws_ssm_parameter.web_subnet_id",
+            "module.networking.aws_subnet.app_subnet",
+            "module.networking.aws_subnet.db_subnet",
+            "module.networking.aws_subnet.web_subnet",
+            "module.networking.aws_vpc.main_vpc",
+            "module.networking.data.aws_availability_zones.available",
+            "module.security.aws_security_group.alb_sg",
+            "module.security.aws_security_group.jump_server_sg",
+            "module.storage.aws_s3_bucket.log_bucket",
+            "module.storage.aws_s3_bucket_logging.bucket_logging",
+            "module.storage.aws_s3_bucket_public_access_block.Logging_bucket_block_public_access",
+            "module.storage.aws_s3_bucket_server_side_encryption_configuration.bucket_encryption",
+            "module.storage.aws_s3_bucket_versioning.Logging_bucket_versioning"
+          ],
+          "create_before_destroy": true
+        }
+      ]
+    },
+    {
+      "module": "module.security",
+      "mode": "managed",
+      "type": "aws_ssm_parameter",
+      "name": "ecs_sg_id",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "allowed_pattern": "",
+            "arn": "arn:aws:ssm:us-east-1:654654335668:parameter/dev/east/ecs-sg-id",
+            "data_type": "text",
+            "description": "The ID of the ECS Security Group",
+            "has_value_wo": null,
+            "id": "/dev/east/ecs-sg-id",
+            "insecure_value": null,
+            "key_id": "alias/aws/ssm",
+            "name": "/dev/east/ecs-sg-id",
+            "overwrite": null,
+            "tags": null,
+            "tags_all": {},
+            "tier": "Standard",
+            "type": "SecureString",
+            "value": "sg-0599d0e431c5ddb98",
+            "value_wo": null,
+            "value_wo_version": null,
+            "version": 1
+          },
+          "sensitive_attributes": [
+            [
+              {
+                "type": "get_attr",
+                "value": "value_wo"
+              }
+            ],
+            [
+              {
+                "type": "get_attr",
+                "value": "value"
+              }
+            ]
+          ],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.iam.aws_iam_instance_profile.ec2_instance_profile",
+            "module.iam.aws_iam_role.ecs_execution_role",
+            "module.iam.aws_iam_role.ecs_task_execution_role",
+            "module.iam.aws_iam_role.ecs_task_role",
+            "module.iam.aws_iam_role.s3_logging_role",
+            "module.iam.aws_iam_role.ssm_role",
+            "module.iam.aws_iam_role_policy_attachment.ecs_execution_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ecs_task_execution_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ecs_task_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.s3_logging_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ssm_role_policy_attachment",
+            "module.iam.data.aws_iam_policy_document.ssm_role_policy",
+            "module.networking.aws_default_route_table.default_route_table",
+            "module.networking.aws_default_security_group.default_sg",
+            "module.networking.aws_eip.nat_eip",
+            "module.networking.aws_internet_gateway.main_igw",
+            "module.networking.aws_nat_gateway.nat_gateway",
+            "module.networking.aws_route_table.app_route_table",
+            "module.networking.aws_route_table.db_route_table",
+            "module.networking.aws_route_table.public_route_table",
+            "module.networking.aws_route_table_association.app_subnet_assoc",
+            "module.networking.aws_route_table_association.db_subnet_assoc",
+            "module.networking.aws_route_table_association.web_subnet_assoc",
+            "module.networking.aws_ssm_parameter.app_subnet_id",
+            "module.networking.aws_ssm_parameter.db_subnet_id",
+            "module.networking.aws_ssm_parameter.igw_id",
+            "module.networking.aws_ssm_parameter.jumpbox_subnet",
+            "module.networking.aws_ssm_parameter.vpc_id",
+            "module.networking.aws_ssm_parameter.web_subnet_id",
+            "module.networking.aws_subnet.app_subnet",
+            "module.networking.aws_subnet.db_subnet",
+            "module.networking.aws_subnet.web_subnet",
+            "module.networking.aws_vpc.main_vpc",
+            "module.networking.data.aws_availability_zones.available",
+            "module.security.aws_security_group.alb_sg",
+            "module.security.aws_security_group.ecs_sg",
+            "module.security.aws_security_group.jump_server_sg",
+            "module.storage.aws_s3_bucket.log_bucket",
+            "module.storage.aws_s3_bucket_logging.bucket_logging",
+            "module.storage.aws_s3_bucket_public_access_block.Logging_bucket_block_public_access",
+            "module.storage.aws_s3_bucket_server_side_encryption_configuration.bucket_encryption",
+            "module.storage.aws_s3_bucket_versioning.Logging_bucket_versioning"
+          ],
+          "create_before_destroy": true
+        }
+      ]
+    },
+    {
+      "module": "module.security",
+      "mode": "managed",
+      "type": "aws_ssm_parameter",
+      "name": "jump_server_sg_id",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "allowed_pattern": "",
+            "arn": "arn:aws:ssm:us-east-1:654654335668:parameter/dev/east/jump-server-sg-id",
+            "data_type": "text",
+            "description": "The ID of the JumpServer Security Group",
+            "has_value_wo": null,
+            "id": "/dev/east/jump-server-sg-id",
+            "insecure_value": null,
+            "key_id": "alias/aws/ssm",
+            "name": "/dev/east/jump-server-sg-id",
+            "overwrite": null,
+            "tags": null,
+            "tags_all": {},
+            "tier": "Standard",
+            "type": "SecureString",
+            "value": "sg-09c1d78ecf3e3b259",
+            "value_wo": null,
+            "value_wo_version": null,
+            "version": 1
+          },
+          "sensitive_attributes": [
+            [
+              {
+                "type": "get_attr",
+                "value": "value"
+              }
+            ],
+            [
+              {
+                "type": "get_attr",
+                "value": "value_wo"
+              }
+            ]
+          ],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.iam.aws_iam_instance_profile.ec2_instance_profile",
+            "module.iam.aws_iam_role.ecs_execution_role",
+            "module.iam.aws_iam_role.ecs_task_execution_role",
+            "module.iam.aws_iam_role.ecs_task_role",
+            "module.iam.aws_iam_role.s3_logging_role",
+            "module.iam.aws_iam_role.ssm_role",
+            "module.iam.aws_iam_role_policy_attachment.ecs_execution_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ecs_task_execution_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ecs_task_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.s3_logging_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ssm_role_policy_attachment",
+            "module.iam.data.aws_iam_policy_document.ssm_role_policy",
+            "module.networking.aws_default_route_table.default_route_table",
+            "module.networking.aws_default_security_group.default_sg",
+            "module.networking.aws_eip.nat_eip",
+            "module.networking.aws_internet_gateway.main_igw",
+            "module.networking.aws_nat_gateway.nat_gateway",
+            "module.networking.aws_route_table.app_route_table",
+            "module.networking.aws_route_table.db_route_table",
+            "module.networking.aws_route_table.public_route_table",
+            "module.networking.aws_route_table_association.app_subnet_assoc",
+            "module.networking.aws_route_table_association.db_subnet_assoc",
+            "module.networking.aws_route_table_association.web_subnet_assoc",
+            "module.networking.aws_ssm_parameter.app_subnet_id",
+            "module.networking.aws_ssm_parameter.db_subnet_id",
+            "module.networking.aws_ssm_parameter.igw_id",
+            "module.networking.aws_ssm_parameter.jumpbox_subnet",
+            "module.networking.aws_ssm_parameter.vpc_id",
+            "module.networking.aws_ssm_parameter.web_subnet_id",
+            "module.networking.aws_subnet.app_subnet",
+            "module.networking.aws_subnet.db_subnet",
+            "module.networking.aws_subnet.web_subnet",
+            "module.networking.aws_vpc.main_vpc",
+            "module.networking.data.aws_availability_zones.available",
+            "module.security.aws_security_group.jump_server_sg",
+            "module.storage.aws_s3_bucket.log_bucket",
+            "module.storage.aws_s3_bucket_logging.bucket_logging",
+            "module.storage.aws_s3_bucket_public_access_block.Logging_bucket_block_public_access",
+            "module.storage.aws_s3_bucket_server_side_encryption_configuration.bucket_encryption",
+            "module.storage.aws_s3_bucket_versioning.Logging_bucket_versioning"
+          ],
+          "create_before_destroy": true
+        }
+      ]
+    },
+    {
+      "module": "module.security",
+      "mode": "managed",
+      "type": "aws_ssm_parameter",
+      "name": "waf_acl_arn",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "allowed_pattern": "",
+            "arn": "arn:aws:ssm:us-east-1:654654335668:parameter/dev/east/waf-acl-arn",
+            "data_type": "text",
+            "description": "The ARN of the WAF ACL",
+            "has_value_wo": null,
+            "id": "/dev/east/waf-acl-arn",
+            "insecure_value": null,
+            "key_id": "alias/aws/ssm",
+            "name": "/dev/east/waf-acl-arn",
+            "overwrite": null,
+            "tags": null,
+            "tags_all": {},
+            "tier": "Standard",
+            "type": "SecureString",
+            "value": "arn:aws:wafv2:us-east-1:654654335668:regional/webacl/blakkbrother-dev-us-east-1-waf-acl/41e986ad-31ef-4b20-bdc3-a7752e032016",
+            "value_wo": null,
+            "value_wo_version": null,
+            "version": 1
+          },
+          "sensitive_attributes": [
+            [
+              {
+                "type": "get_attr",
+                "value": "value"
+              }
+            ],
+            [
+              {
+                "type": "get_attr",
+                "value": "value_wo"
+              }
+            ]
+          ],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.iam.aws_iam_instance_profile.ec2_instance_profile",
+            "module.iam.aws_iam_role.ecs_execution_role",
+            "module.iam.aws_iam_role.ecs_task_execution_role",
+            "module.iam.aws_iam_role.ecs_task_role",
+            "module.iam.aws_iam_role.s3_logging_role",
+            "module.iam.aws_iam_role.ssm_role",
+            "module.iam.aws_iam_role_policy_attachment.ecs_execution_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ecs_task_execution_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ecs_task_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.s3_logging_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ssm_role_policy_attachment",
+            "module.iam.data.aws_iam_policy_document.ssm_role_policy",
+            "module.networking.aws_default_route_table.default_route_table",
+            "module.networking.aws_default_security_group.default_sg",
+            "module.networking.aws_eip.nat_eip",
+            "module.networking.aws_internet_gateway.main_igw",
+            "module.networking.aws_nat_gateway.nat_gateway",
+            "module.networking.aws_route_table.app_route_table",
+            "module.networking.aws_route_table.db_route_table",
+            "module.networking.aws_route_table.public_route_table",
+            "module.networking.aws_route_table_association.app_subnet_assoc",
+            "module.networking.aws_route_table_association.db_subnet_assoc",
+            "module.networking.aws_route_table_association.web_subnet_assoc",
+            "module.networking.aws_ssm_parameter.app_subnet_id",
+            "module.networking.aws_ssm_parameter.db_subnet_id",
+            "module.networking.aws_ssm_parameter.igw_id",
+            "module.networking.aws_ssm_parameter.jumpbox_subnet",
+            "module.networking.aws_ssm_parameter.vpc_id",
+            "module.networking.aws_ssm_parameter.web_subnet_id",
+            "module.networking.aws_subnet.app_subnet",
+            "module.networking.aws_subnet.db_subnet",
+            "module.networking.aws_subnet.web_subnet",
+            "module.networking.aws_vpc.main_vpc",
+            "module.networking.data.aws_availability_zones.available",
+            "module.security.aws_wafv2_web_acl.waf_acl",
+            "module.storage.aws_s3_bucket.log_bucket",
+            "module.storage.aws_s3_bucket_logging.bucket_logging",
+            "module.storage.aws_s3_bucket_public_access_block.Logging_bucket_block_public_access",
+            "module.storage.aws_s3_bucket_server_side_encryption_configuration.bucket_encryption",
+            "module.storage.aws_s3_bucket_versioning.Logging_bucket_versioning"
+          ],
+          "create_before_destroy": true
+        }
+      ]
+    },
+    {
+      "module": "module.security",
+      "mode": "managed",
+      "type": "aws_wafv2_web_acl",
+      "name": "waf_acl",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "application_integration_url": "",
+            "arn": "arn:aws:wafv2:us-east-1:654654335668:regional/webacl/blakkbrother-dev-us-east-1-waf-acl/41e986ad-31ef-4b20-bdc3-a7752e032016",
+            "association_config": [],
+            "capacity": 700,
+            "captcha_config": [],
+            "challenge_config": [],
+            "custom_response_body": [],
+            "default_action": [
+              {
+                "allow": [
+                  {
+                    "custom_request_handling": []
+                  }
+                ],
+                "block": []
+              }
+            ],
+            "description": "WAF ACL to block Top 10 OWASP Attacks",
+            "id": "41e986ad-31ef-4b20-bdc3-a7752e032016",
+            "lock_token": "9e04dffa-8d47-42fb-ad45-25b75ea561ca",
+            "name": "blakkbrother-dev-us-east-1-waf-acl",
+            "name_prefix": "",
+            "rule": [
+              {
+                "action": [],
+                "captcha_config": [],
+                "challenge_config": [],
+                "name": "AWS-AWSManagedRulesCommonRuleSet",
+                "override_action": [
+                  {
+                    "count": [],
+                    "none": [
+                      {}
+                    ]
+                  }
+                ],
+                "priority": 1,
+                "rule_label": [],
+                "statement": [
+                  {
+                    "and_statement": [],
+                    "byte_match_statement": [],
+                    "geo_match_statement": [],
+                    "ip_set_reference_statement": [],
+                    "label_match_statement": [],
+                    "managed_rule_group_statement": [
+                      {
+                        "managed_rule_group_configs": [],
+                        "name": "AWSManagedRulesCommonRuleSet",
+                        "rule_action_override": [],
+                        "scope_down_statement": [],
+                        "vendor_name": "AWS",
+                        "version": ""
+                      }
+                    ],
+                    "not_statement": [],
+                    "or_statement": [],
+                    "rate_based_statement": [],
+                    "regex_match_statement": [],
+                    "regex_pattern_set_reference_statement": [],
+                    "rule_group_reference_statement": [],
+                    "size_constraint_statement": [],
+                    "sqli_match_statement": [],
+                    "xss_match_statement": []
+                  }
+                ],
+                "visibility_config": [
+                  {
+                    "cloudwatch_metrics_enabled": true,
+                    "metric_name": "AWS-AWSManagedRulesCommonRuleSet",
+                    "sampled_requests_enabled": true
+                  }
+                ]
+              }
+            ],
+            "rule_json": null,
+            "scope": "REGIONAL",
+            "tags": null,
+            "tags_all": {},
+            "token_domains": null,
+            "visibility_config": [
+              {
+                "cloudwatch_metrics_enabled": true,
+                "metric_name": "blakkbrother-dev-us-east-1-waf-acl-metric",
+                "sampled_requests_enabled": true
+              }
+            ]
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.iam.aws_iam_instance_profile.ec2_instance_profile",
+            "module.iam.aws_iam_role.ecs_execution_role",
+            "module.iam.aws_iam_role.ecs_task_execution_role",
+            "module.iam.aws_iam_role.ecs_task_role",
+            "module.iam.aws_iam_role.s3_logging_role",
+            "module.iam.aws_iam_role.ssm_role",
+            "module.iam.aws_iam_role_policy_attachment.ecs_execution_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ecs_task_execution_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ecs_task_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.s3_logging_role_policy_attachment",
+            "module.iam.aws_iam_role_policy_attachment.ssm_role_policy_attachment",
+            "module.iam.data.aws_iam_policy_document.ssm_role_policy",
+            "module.networking.aws_default_route_table.default_route_table",
+            "module.networking.aws_default_security_group.default_sg",
+            "module.networking.aws_eip.nat_eip",
+            "module.networking.aws_internet_gateway.main_igw",
+            "module.networking.aws_nat_gateway.nat_gateway",
+            "module.networking.aws_route_table.app_route_table",
+            "module.networking.aws_route_table.db_route_table",
+            "module.networking.aws_route_table.public_route_table",
+            "module.networking.aws_route_table_association.app_subnet_assoc",
+            "module.networking.aws_route_table_association.db_subnet_assoc",
+            "module.networking.aws_route_table_association.web_subnet_assoc",
+            "module.networking.aws_ssm_parameter.app_subnet_id",
+            "module.networking.aws_ssm_parameter.db_subnet_id",
+            "module.networking.aws_ssm_parameter.igw_id",
+            "module.networking.aws_ssm_parameter.jumpbox_subnet",
+            "module.networking.aws_ssm_parameter.vpc_id",
+            "module.networking.aws_ssm_parameter.web_subnet_id",
+            "module.networking.aws_subnet.app_subnet",
+            "module.networking.aws_subnet.db_subnet",
+            "module.networking.aws_subnet.web_subnet",
+            "module.networking.aws_vpc.main_vpc",
+            "module.networking.data.aws_availability_zones.available",
+            "module.storage.aws_s3_bucket.log_bucket",
+            "module.storage.aws_s3_bucket_logging.bucket_logging",
+            "module.storage.aws_s3_bucket_public_access_block.Logging_bucket_block_public_access",
+            "module.storage.aws_s3_bucket_server_side_encryption_configuration.bucket_encryption",
+            "module.storage.aws_s3_bucket_versioning.Logging_bucket_versioning"
+          ],
+          "create_before_destroy": true
+        }
+      ]
+    },
+    {
+      "module": "module.storage",
+      "mode": "managed",
+      "type": "aws_s3_bucket",
+      "name": "log_bucket",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "acceleration_status": "",
+            "acl": null,
+            "arn": "arn:aws:s3:::blakkbrother-dev-us-east-1-blakkbrother",
+            "bucket": "blakkbrother-dev-us-east-1-blakkbrother",
+            "bucket_domain_name": "blakkbrother-dev-us-east-1-blakkbrother.s3.amazonaws.com",
+            "bucket_prefix": "",
+            "bucket_regional_domain_name": "blakkbrother-dev-us-east-1-blakkbrother.s3.us-east-1.amazonaws.com",
+            "cors_rule": [],
+            "force_destroy": false,
+            "grant": [
+              {
+                "id": "39294101c68c6e01d7b8ba9ab7b23d9a833d3106120115e6cfee0a1619236675",
+                "permissions": [
+                  "FULL_CONTROL"
+                ],
+                "type": "CanonicalUser",
+                "uri": ""
+              }
+            ],
+            "hosted_zone_id": "Z3AQBSTGFYJSTF",
+            "id": "blakkbrother-dev-us-east-1-blakkbrother",
+            "lifecycle_rule": [],
+            "logging": [],
+            "object_lock_configuration": [],
+            "object_lock_enabled": false,
+            "policy": "",
+            "region": "us-east-1",
+            "replication_configuration": [],
+            "request_payer": "BucketOwner",
+            "server_side_encryption_configuration": [
+              {
+                "rule": [
+                  {
+                    "apply_server_side_encryption_by_default": [
+                      {
+                        "kms_master_key_id": "",
+                        "sse_algorithm": "AES256"
+                      }
+                    ],
+                    "bucket_key_enabled": false
+                  }
+                ]
+              }
+            ],
+            "tags": {
+              "Environment": "dev",
+              "Name": "blakkbrother-dev-us-east-1-blakkbrother",
+              "Owner": "blakkbrother",
+              "Region": "us-east-1"
+            },
+            "tags_all": {
+              "Environment": "dev",
+              "Name": "blakkbrother-dev-us-east-1-blakkbrother",
+              "Owner": "blakkbrother",
+              "Region": "us-east-1"
+            },
+            "timeouts": null,
+            "versioning": [
+              {
+                "enabled": false,
+                "mfa_delete": false
+              }
+            ],
+            "website": [],
+            "website_domain": null,
+            "website_endpoint": null
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxMjAwMDAwMDAwMDAwLCJkZWxldGUiOjM2MDAwMDAwMDAwMDAsInJlYWQiOjEyMDAwMDAwMDAwMDAsInVwZGF0ZSI6MTIwMDAwMDAwMDAwMH19",
+          "create_before_destroy": true
+        }
+      ]
+    },
+    {
+      "module": "module.storage",
+      "mode": "managed",
+      "type": "aws_s3_bucket_logging",
+      "name": "bucket_logging",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "bucket": "blakkbrother-dev-us-east-1-blakkbrother",
+            "expected_bucket_owner": "",
+            "id": "blakkbrother-dev-us-east-1-blakkbrother",
+            "target_bucket": "blakkbrother-dev-us-east-1-blakkbrother",
+            "target_grant": [],
+            "target_object_key_format": [],
+            "target_prefix": "log/"
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.storage.aws_s3_bucket.log_bucket"
+          ],
+          "create_before_destroy": true
+        }
+      ]
+    },
+    {
+      "module": "module.storage",
+      "mode": "managed",
+      "type": "aws_s3_bucket_public_access_block",
+      "name": "Logging_bucket_block_public_access",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "block_public_acls": true,
+            "block_public_policy": true,
+            "bucket": "blakkbrother-dev-us-east-1-blakkbrother",
+            "id": "blakkbrother-dev-us-east-1-blakkbrother",
+            "ignore_public_acls": true,
+            "restrict_public_buckets": true
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.storage.aws_s3_bucket.log_bucket"
+          ],
+          "create_before_destroy": true
+        }
+      ]
+    },
+    {
+      "module": "module.storage",
+      "mode": "managed",
+      "type": "aws_s3_bucket_server_side_encryption_configuration",
+      "name": "bucket_encryption",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "bucket": "blakkbrother-dev-us-east-1-blakkbrother",
+            "expected_bucket_owner": "",
+            "id": "blakkbrother-dev-us-east-1-blakkbrother",
+            "rule": [
+              {
+                "apply_server_side_encryption_by_default": [
+                  {
+                    "kms_master_key_id": "",
+                    "sse_algorithm": "AES256"
+                  }
+                ],
+                "bucket_key_enabled": null
+              }
+            ]
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.storage.aws_s3_bucket.log_bucket"
+          ],
+          "create_before_destroy": true
+        }
+      ]
+    },
+    {
+      "module": "module.storage",
+      "mode": "managed",
+      "type": "aws_s3_bucket_versioning",
+      "name": "Logging_bucket_versioning",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "bucket": "blakkbrother-dev-us-east-1-blakkbrother",
+            "expected_bucket_owner": "",
+            "id": "blakkbrother-dev-us-east-1-blakkbrother",
+            "mfa": null,
+            "versioning_configuration": [
+              {
+                "mfa_delete": "",
+                "status": "Enabled"
+              }
+            ]
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "module.storage.aws_s3_bucket.log_bucket"
+          ],
+          "create_before_destroy": true
+        }
+      ]
+    }
+  ],
+  "check_results": null
+}
