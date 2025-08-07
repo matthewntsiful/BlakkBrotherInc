@@ -11,6 +11,57 @@ This project implements a secure, scalable, and highly available AWS infrastruct
 
 ## Architecture
 
+```mermaid
+graph TD
+    subgraph AWS[ ]
+        subgraph VPC[VPC - 10.0.0.0/16]
+            subgraph PublicSubnets[Public Subnets]
+                ALB[Application Load Balancer]
+                IGW[Internet Gateway]
+                NAT[NAT Gateway]
+            end
+            
+            subgraph PrivateSubnets[Private Subnets]
+                subgraph AppTier[App Tier]
+                    ECS[ECS Fargate Tasks]
+                end
+                
+                subgraph DBTier[DB Tier]
+                    RDS[(RDS Database)]
+                end
+            end
+            
+            subgraph Security[Security]
+                WAF[WAF]
+                SG[Security Groups]
+            end
+            
+            subgraph Storage[Storage]
+                S3[(S3 Buckets)]
+                ECR[ECR Repository]
+            end
+        end
+    end
+    
+    User[User] -->|HTTPS| ALB
+    ALB -->|Routing| ECS
+    ECS -->|Read/Write| RDS
+    ECS -->|Store/Retrieve| S3
+    ECS -->|Push/Pull Images| ECR
+    
+    classDef aws fill:#FF9900,color:white,stroke:#000,stroke-width:2px
+    classDef vpc fill:#3d85c6,color:white,stroke:#000,stroke-width:2px
+    classDef service fill:#5b5b5b,color:white,stroke:#000,stroke-width:1px
+    classDef storage fill:#ffd966,stroke:#000,stroke-width:1px
+    classDef security fill:#cc0000,color:white,stroke:#000,stroke-width:1px
+    
+    class AWS aws
+    class VPC vpc
+    class ALB,ECS,RDS service
+    class S3,ECR storage
+    class WAF,SG security
+```
+
 The infrastructure is built with a modular approach, separating concerns into distinct modules:
 
 1. **Storage Module** - S3 buckets for application data and logs
